@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1c24"/><stop offset="1" stop-color="#000000"/></linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".15" r=".7"><stop offset="0" stop-color="#c9a84e" stop-opacity=".35"/><stop offset="1" stop-color="#c9a84e" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#glow)"/>
+  <rect x="40" y="40" width="1520" height="920" rx="36" fill="none" stroke="#c9a84e" stroke-opacity=".55" stroke-width="3"/>
+  <g fill="#c9a84e" fill-opacity=".5">
+    <circle cx="1310" cy="240" r="6"/><circle cx="1400" cy="320" r="4"/><circle cx="1230" cy="360" r="3"/>
+    <circle cx="1460" cy="190" r="3"/><circle cx="1180" cy="200" r="4"/><circle cx="1350" cy="420" r="5"/>
+  </g>
+  <path d="M1330 470 l26 52 57 8 -41 40 10 57 -52 -27 -51 27 10 -57 -42 -40 57 -8z" fill="#c9a84e" fill-opacity=".8"/>
+  <text x="120" y="190" font-family="Helvetica, Arial, sans-serif" font-size="40" letter-spacing="12" fill="#c9a84e" fill-opacity=".85">RMS</text>
+  <text x="120" y="780" font-family="Georgia, 'Times New Roman', serif" font-size="128" font-style="italic" fill="#c9a84e">Cheers to You</text>
+  <text x="120" y="870" font-family="Helvetica, Arial, sans-serif" font-size="34" letter-spacing="10" fill="#c9a84e">GIFT CARD</text>
+</svg>

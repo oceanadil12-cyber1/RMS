@@ -1,0 +1,11 @@
+# Keep credentials, cache and helper files private (Apache / cPanel hosts).
+<FilesMatch "^(config(\.example)?\.php|site-settings\.php|lib\.php|db\.php|chat-claude\.php|chat-order\.php|chat-log\.php|chat-cards\.php|chat-insights\.php|gift-cards-lib\.php|team-users\.php)$">
+    Require all denied
+</FilesMatch>
+RedirectMatch 403 ^.*/api/cache/.*$
+# Anthropic PHP SDK (installed with Composer for the chat assistant).
+RedirectMatch 403 ^.*/api/vendor/.*$
+RedirectMatch 403 ^.*/api/composer\.(json|lock)$
+# Form submissions (contact, reservations, newsletter emails) are private.
+RedirectMatch 403 ^.*/api/data/.*$
+Options -Indexes

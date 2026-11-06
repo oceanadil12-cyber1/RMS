@@ -1,0 +1,106 @@
+# Speed and security settings for Apache / cPanel hosting.
+# (api/.htaccess separately keeps the API's config, data and cache private.)
+
+Options -Indexes
+DirectoryIndex index.html
+# Branded "page not found" page. Missing addresses are sent to 404.php by the
+# rewrite rules below, which works in any folder; this line covers the rest when
+# the site sits at the domain root.
+ErrorDocument 404 /404.html
+
+# ---------- Private files ----------
+# Notes and dot-files (e.g. ORDERING-SETUP.md) are never served.
+<FilesMatch "(\.(md|log|bak|sql|ini|sh|zip|bat)|^\..*)$">
+    Require all denied
+</FilesMatch>
+
+# ---------- HTTPS ----------
+# Turn this on once the site's SSL certificate is active (most hosts include
+# one free): remove the # from the five lines below.
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ---------- Clean URLs ----------
+# /events loads events.html (links on the site use .html, so this is a bonus).
+# Every rule here works whether the site is at the domain root or in a folder.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # The site's own address prefix ("/" at the root, "/folder/" in a folder) → %{ENV:BASE}
+    RewriteCond $0#%{REQUEST_URI} ^([^#]*)#(.*)\1$
+    RewriteRule ^.*$ - [E=BASE:%2]
+
+    # The home page has one address: /index.html (typed or from an old link) → /
+    RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+    RewriteRule ^(.*/)?index\.html$ %{ENV:BASE}$1 [R=301,L]
+
+    # Dine-in: /dine-in/table/{number} → dine-in/index.php
+    RewriteRule ^dine-in/table/([0-9]+)/?$ dine-in/index.php?table=$1 [L,QSA]
+
+    # Pages that can be switched off (Events, Performers, Dancers, Entertainment, Gallery,
+    # Private Events, Gift Cards; and /events etc.) → api/page.php, which shows
+    # them only while they're switched on in the admin's Store settings (otherwise 404).
+    RewriteRule ^(events|performers|dancers|entertainment|gallery|private-events|gift-cards)(\.html)?/?$ api/page.php?name=$1 [L,QSA]
+
+    # Git data and developer docs, in case they get uploaded by mistake: not found.
+    RewriteRule ^(\.git|docs)(/|$) 404.php [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.+?)/?$ $1.html [L]
+
+    # Any other address that doesn't exist: the branded 404 page.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ 404.php [L]
+</IfModule>
+
+# ---------- File types ----------
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType font/woff2 .woff2
+    AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ---------- Compression ----------
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# ---------- Browser caching ----------
+# CSS and JS links carry ?v=... — change that value in the pages after editing
+# css/style.css or a js/ file so visitors get the new version straight away.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault                          "access plus 1 hour"
+    ExpiresByType text/html                 "access plus 0 seconds"
+    ExpiresByType application/json          "access plus 0 seconds"
+    ExpiresByType text/css                  "access plus 1 month"
+    ExpiresByType application/javascript    "access plus 1 month"
+    ExpiresByType text/javascript           "access plus 1 month"
+    ExpiresByType image/webp                "access plus 6 months"
+    ExpiresByType image/png                 "access plus 6 months"
+    ExpiresByType image/jpeg                "access plus 6 months"
+    ExpiresByType image/svg+xml             "access plus 6 months"
+    ExpiresByType image/x-icon              "access plus 6 months"
+    ExpiresByType font/woff2                "access plus 1 year"
+</IfModule>
+
+# ---------- Security headers ----------
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), usb=(), interest-cohort=()"
+    # Tell browsers to always use HTTPS (only sent over HTTPS connections).
+    Header always set Strict-Transport-Security "max-age=15552000" env=HTTPS
+    Header unset X-Powered-By
+    Header always unset X-Powered-By
+</IfModule>

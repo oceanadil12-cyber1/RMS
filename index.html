@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RMS | South Florida's Ultimate Dining, Drinks & Entertainment</title>
+  <meta name="description" content="Award-winning restaurant, live entertainment, craft cocktails, nightlife, and unforgettable events in the heart of Wilton Manors, South Florida.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=20261104f">
+  <link rel="stylesheet" href="api/site-features.php">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="./" class="logo"><img src="images/logo.png" alt="RMS" width="360" height="220"></a>
+      <nav class="nav">
+        <a href="./" class="active">Home</a>
+        <a href="events.html">Events</a>
+        <a href="menu.html">Menu</a>
+        <a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html#reserve" class="btn-reserve">Reserve A Table</a>
+      <button class="menu-toggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <a href="./">Home</a>
+    <a href="events.html">Events</a>
+    <a href="menu.html">Menu</a>
+    <a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html#reserve" class="btn-outline" style="margin-top:20px;">Reserve A Table</a>
+  </div>
+
+  <!-- HERO SLIDER -->
+  <section class="hero">
+    <h1 class="sr-only">RMS &mdash; dining, drinks &amp; live entertainment in Wilton Manors</h1>
+    <div class="hero-slider">
+      <div class="hero-slide hero-slide--full active">
+        <picture>
+          <source media="(orientation: portrait)" srcset="images/hero-banner-mobile.webp" width="781" height="1400">
+          <img fetchpriority="high" src="images/hero-banner.webp" srcset="images/hero-banner-1280.webp 1280w, images/hero-banner.webp 1920w" sizes="100vw" width="1920" height="1071" alt="RMS">
+        </picture>
+      </div>
+      <div class="hero-slide">
+        <img decoding="async" data-src="images/hero-exterior.webp" width="1916" height="821" alt="RMS exterior at sunset">
+      </div>
+      <div class="hero-slide">
+        <img decoding="async" data-src="images/hero-meetme.webp" width="1600" height="1600" alt="Meet Me At RMS - Cocktails, Food, Live Entertainment">
+      </div>
+    </div>
+    <div class="hero-dots">
+      <button class="hero-dot active" aria-label="Slide 1"></button>
+      <button class="hero-dot" aria-label="Slide 2"></button>
+      <button class="hero-dot" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- HAPPY HOUR TICKER (details from the Square site's Happy Hour Menu page) -->
+  <a class="hh-ticker" href="menu.html#happy-hour" aria-label="Happy Hour every day 4 to 6:45 PM. See the Happy Hour menu.">
+    <span class="hh-ticker-label">
+      <span class="hh-ticker-dot"></span>
+      <span data-hh-status data-hh-idle="Happy Hour &middot; Daily 4&ndash;6:45 PM">Happy Hour &middot; Daily 4&ndash;6:45 PM</span>
+    </span>
+    <span class="hh-ticker-track" aria-hidden="true">
+      <span class="hh-ticker-items">
+        <span>Mini Nachos <b>$6.99</b></span>
+        <span>Mexican Street Tacos <b>$6</b></span>
+        <span>Champ Slider &amp; Fries <b>$6.99</b></span>
+        <span>BBQ Pork Slider &amp; Fries <b>$6.99</b></span>
+        <span>4 oz. Burger &amp; Fries <b>$6.99</b></span>
+        <span>Bacon Cheese Dog &amp; Fries <b>$6.99</b></span>
+        <span>Wings (5) <b>$6.99</b></span>
+        <span>Chicken Quesadilla <b>$11.99</b></span>
+        <span>Sides from <b>$3</b></span>
+        <span class="hh-ticker-cta">See the Happy Hour menu &rarr;</span>
+      </span>
+    </span>
+  </a>
+
+  <!-- AWARDS -->
+  <section class="awards-bar">
+    <div class="awards-track">
+      <div class="award-item">
+        <img width="240" height="240" loading="lazy" decoding="async" src="images/award-matador.webp" alt="Most Favorited Nightclub for LGBTQ+ Travelers - Matador Network">
+      </div>
+      <div class="award-item">
+        <img width="240" height="240" loading="lazy" decoding="async" src="images/award-restaurant-guru.webp" alt="Restaurant Guru 2024 - Best Club in Wilton Manors">
+      </div>
+      <div class="award-item">
+        <img width="240" height="240" loading="lazy" decoding="async" src="images/award-sfgn.webp" alt="SFGN Best of 2024 - Voted Best Bar 2018-2024">
+      </div>
+      <div class="award-item">
+        <img width="240" height="240" loading="lazy" decoding="async" src="images/award-outsfl.webp" alt="OutSFL Your Choice Awards 2023 - Best Bar">
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIDE DIVIDER -->
+  <div class="pride-divider"></div>
+
+  <!-- EXPERIENCE RMS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Experience <em>RMS</em></h2>
+        <p class="section-desc">Three unforgettable experiences under one roof in the heart of Wilton Manors.</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="experience-grid">
+        <div class="experience-card fade-in">
+          <div class="experience-card-bg" data-bg="images/site/burger-photo-1024.webp"></div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <div class="experience-card-icon">&#127860;</div>
+            <h3>Dine</h3>
+            <p>Exceptional food made fresh every day. From gourmet burgers to crafted specials, our kitchen delivers.</p>
+            <a href="menu.html" class="btn-link">View Menu &rarr;</a>
+          </div>
+        </div>
+        <div class="experience-card fade-in fade-in-delay-1">
+          <div class="experience-card-bg" data-bg="images/site/cocktail-photo-1024.webp"></div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <div class="experience-card-icon">&#127864;</div>
+            <h3>Drink</h3>
+            <p>Craft cocktails, happy hour specials, and signature beverages crafted by expert mixologists.</p>
+            <a href="menu.html#drinks" class="btn-link">View Drinks &rarr;</a>
+          </div>
+        </div>
+        <div class="experience-card fade-in fade-in-delay-2">
+          <div class="experience-card-bg" data-bg="images/site/entertainment-stage-scene-1024.webp"></div>
+          <div class="experience-card-overlay"></div>
+          <div class="experience-card-content">
+            <div class="experience-card-icon">&#127926;</div>
+            <h3>Celebrate</h3>
+            <p>Live shows, DJs, themed nights, and community events that keep you coming back.</p>
+            <a href="entertainment.html" class="btn-link">View Entertainment &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR SPACES -->
+  <section class="section section-dark">
+    <div class="container-wide">
+      <div class="section-header">
+        <span class="section-label">Explore Our Venue</span>
+        <h2 class="section-title">Our <em>Spaces</em></h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="spaces-grid">
+        <div class="space-card fade-in">
+          <div class="space-card-bg" data-bg="images/site/main-bar-interior-1024.webp"></div>
+          <div class="space-card-overlay"></div>
+          <div class="space-card-content">
+            <h3>Main Bar</h3>
+            <p>Large social atmosphere, great drinks, good vibes.</p>
+          </div>
+        </div>
+        <div class="space-card fade-in fade-in-delay-1">
+          <div class="space-card-bg" data-bg="images/site/lounge-1024.webp"></div>
+          <div class="space-card-overlay"></div>
+          <div class="space-card-content">
+            <h3>Lounge</h3>
+            <p>Live performances, up close and personal.</p>
+          </div>
+        </div>
+        <div class="space-card fade-in fade-in-delay-2">
+          <div class="space-card-bg" data-bg="images/site/outdoor-patio-scene-1024.webp"></div>
+          <div class="space-card-overlay"></div>
+          <div class="space-card-content">
+            <h3>Outdoor Patio</h3>
+            <p>Open-air dining with a tropical South Florida feel.</p>
+          </div>
+        </div>
+        <div class="space-card fade-in fade-in-delay-3">
+          <div class="space-card-bg" data-bg="images/site/entertainment-stage-scene-1024.webp"></div>
+          <div class="space-card-overlay"></div>
+          <div class="space-card-content">
+            <h3>Entertainment Stage</h3>
+            <p>Where the magic happens every weekend.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS — every show in the Weekly Lineup as a right-to-left slider.
+       js/upcoming.js reads the cards from events.html (edit events there), orders them
+       from the next show onward and starts the slider. Without JavaScript these four
+       weekly highlights show in a row you can swipe. -->
+  <section class="section" id="events" data-site-feature="events">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What's Coming Up</span>
+        <h2 class="section-title">Upcoming <em>Events</em></h2>
+        <p class="section-desc">Follow us for the latest events, themed nights, and unforgettable performances.</p>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+
+    <div class="ev-slider fade-in" data-ev-slider>
+      <div class="ev-slider-viewport">
+        <div class="ev-slider-track">
+          <a class="ev-slide" href="events.html#ev-tue">
+            <article class="ev-card">
+              <div class="ev-poster">
+                <img src="images/events/drag-bingo.webp" alt="Drag Bingo poster" width="480" height="600" loading="lazy" decoding="async">
+                <span class="ev-time">Every Tue &middot; 10:00 PM</span>
+              </div>
+              <div class="ev-body">
+                <h4>Drag Bingo</h4>
+                <p class="ev-host">Hosted by London Adour</p>
+                <p class="ev-desc">Bingo with a twist and fun prizes to win. $6 margaritas, $9 Grey Goose.</p>
+                <ul class="ev-tags"><li>Drag</li><li>Prizes</li><li>No Cover</li></ul>
+              </div>
+            </article>
+          </a>
+          <a class="ev-slide" href="events.html#ev-thu">
+            <article class="ev-card">
+              <div class="ev-poster">
+                <img src="images/events/whats-the-tea.webp" alt="What’s the Tea? poster" width="480" height="600" loading="lazy" decoding="async">
+                <span class="ev-time">Every Thu &middot; 10:00 PM</span>
+              </div>
+              <div class="ev-body">
+                <h4>What&rsquo;s the Tea?</h4>
+                <p class="ev-host">Hosted by TP Lords</p>
+                <p class="ev-desc">Watch out for the big girls &mdash; a night of drag, comedy and all the tea.</p>
+                <ul class="ev-tags"><li>Drag</li><li>$5 Long Islands</li><li>No Cover</li></ul>
+              </div>
+            </article>
+          </a>
+          <a class="ev-slide" href="events.html#ev-fri">
+            <article class="ev-card">
+              <div class="ev-poster">
+                <img src="images/events/rms-angels.webp" alt="RMS’s Angels poster" width="480" height="600" loading="lazy" decoding="async">
+                <span class="ev-time">Every Fri &middot; 9:00 PM</span>
+              </div>
+              <div class="ev-body">
+                <h4>RMS&rsquo;s Angels</h4>
+                <p class="ev-host">Hosted by the Angels</p>
+                <p class="ev-desc">The Angels take the stage for a full night of drag.</p>
+                <ul class="ev-tags"><li>Drag Show</li><li>No Cover</li></ul>
+              </div>
+            </article>
+          </a>
+          <a class="ev-slide" href="events.html#ev-sat">
+            <article class="ev-card">
+              <div class="ev-poster">
+                <img src="images/events/saturday-night-rewind.webp" alt="Saturday Night Rewind poster" width="480" height="600" loading="lazy" decoding="async">
+                <span class="ev-time">Every Sat &middot; 8:30 PM</span>
+              </div>
+              <div class="ev-body">
+                <h4>Saturday Night Rewind</h4>
+                <p class="ev-host">Hosted by London Adour &middot; DJ Maikel</p>
+                <p class="ev-desc">A throwback drag show packed with the hits you love.</p>
+                <ul class="ev-tags"><li>Drag Show</li><li>No Cover</li></ul>
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="ev-slider-controls">
+        <a href="events.html" class="btn-outline">View All Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PREVIEW -->
+  <section class="section section-dark" data-site-feature="gallery">
+    <div class="container-wide">
+      <div class="section-header">
+        <span class="section-label">Behind The Scenes</span>
+        <h2 class="section-title"><em>Gallery</em></h2>
+        <div class="gold-line"></div>
+      </div>
+      <!-- Instagram feed (Elfsight) -->
+      <div class="elfsight-app-f1284aae-14c4-406d-a843-ef1a9db4b3b8"></div>
+      <div style="text-align:center; margin-top:50px;">
+        <a href="gallery.html" class="btn-outline">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item fade-in">
+      <h3 data-count="29" data-suffix="">0</h3>
+      <p>Years of Experience</p>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-1">
+      <h3 data-count="1997" data-suffix="">0</h3>
+      <p>Started In</p>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-2">
+      <h3 data-count="2500" data-suffix="+">0</h3>
+      <p>Events</p>
+    </div>
+    <div class="stat-item fade-in fade-in-delay-3">
+      <h3 data-count="7" data-suffix="">0</h3>
+      <p>Days A Week</p>
+    </div>
+  </div>
+
+  <!-- VISIT US -->
+  <section class="section" id="visit">
+    <div class="container">
+      <div class="visit-section">
+        <div class="visit-info fade-in">
+          <span class="section-label">Come See Us</span>
+          <h3>Visit <em>RMS</em></h3>
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Address</h4>
+              <p>2266 Wilton Drive<br>Wilton Manors, FL 33305</p>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="far fa-clock"></i></div>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon - Sun: 11:00 AM - 2:00 AM</p>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="fas fa-car"></i></div>
+            <div>
+              <h4>Parking</h4>
+              <p>Street parking & public lots available nearby</p>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>Call Us</h4>
+              <p><a href="tel:+19545652526">(954) 565-2526</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="visit-map fade-in fade-in-delay-1">
+          <iframe src="https://www.google.com/maps?q=RMS,+2266+Wilton+Dr,+Wilton+Manors,+FL+33305&output=embed" title="Map: RMS, 2266 Wilton Drive" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE REVIEWS (Elfsight widget, same as staging) -->
+  <section class="section section-dark guest-reviews">
+    <div class="container-wide">
+      <h2 class="reviews-divider"><span>What Our Guests Says</span></h2>
+      <div class="elfsight-app-85502137-6bd7-4d75-bd70-6d7300e548af"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready for an Unforgettable <em>Night?</em></h2>
+      <p>Book your table, plan your event, or simply walk in — we're ready for you.</p>
+      <div class="cta-buttons">
+        <a href="contact.html#reserve" class="btn-primary">Reserve A Table</a>
+        <a href="private-events.html" class="btn-outline">Plan Private Event</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIDE DIVIDER -->
+  <!-- NEWSLETTER (like "Stay in the Loop" on the Square site) — posts to api/subscribe.php -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay in the <em>Loop</em></h2>
+      <p>Get the latest on events, shows and specials when you sign up for our newsletter.</p>
+      <form class="newsletter-form" method="post" action="#" data-endpoint="api/subscribe.php" data-success="You're on the list! Watch your inbox for our next update." novalidate>
+        <label class="sr-only" for="nl-email-index">Email address</label>
+        <input id="nl-email-index" type="email" name="email" placeholder="Email" autocomplete="email" required>
+        <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="form-status" role="status" aria-live="polite" hidden></p>
+      <p class="newsletter-note">No spam &mdash; just the good stuff. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <div class="pride-divider"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./" class="logo"><img loading="lazy" decoding="async" src="images/logo.png" alt="RMS" width="360" height="220"></a>
+          <p class="footer-tagline">Dining, Drinks, Entertainment.<br>Simply unforgettable.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="./">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="private-events.html">Private Events</a></li><li><a href="gift-cards.html">Gift Cards</a></li><li><a href="performers.html">Our Performers</a></li><li><a href="dancers.html">Meet Our Dancers</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html#reserve">Reservations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <div class="footer-contact-item">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+            <p>2266 Wilton Drive<br>Wilton Manors, FL 33305</p>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon"><i class="fas fa-phone"></i></span>
+            <a href="tel:+19545652526">(954) 565-2526</a>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon"><i class="far fa-clock"></i></span>
+            <p>Mon - Sun<br>11:00 AM - 2:00 AM</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 RMS. All rights reserved.</p>
+        <p class="footer-credit">Website designed and developed by <a href="https://seoberg.com" target="_blank" rel="noopener">SEOBERG</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA BAR -->
+  <div class="mobile-cta-bar">
+    <a href="tel:+19545652526" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="contact.html#reserve" class="cta-reserve">Reserve A Table</a>
+  </div>
+
+  <script src="js/main.js?v=20260925"></script>
+  <script src="js/elfsight-badge.js?v=20260925"></script>
+  <script src="js/upcoming.js?v=20260929"></script>
+  <script src="js/chat.js?v=20261016b"></script>
+</body>
+</html>

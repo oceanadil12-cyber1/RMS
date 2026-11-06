@@ -1,0 +1,1164 @@
+/* Customer-facing dine-in ordering — Option 1: Welcome Screen */
+
+/* --- Screens (only one visible at a time) --- */
+.dinein-screen {
+  display: none;
+  min-height: 100dvh;
+}
+.dinein-screen--active {
+  display: block;
+}
+
+/* --- Welcome Screen --- */
+.dinein-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.dinein-welcome-logo img {
+  width: 220px;
+  height: auto;
+  margin-bottom: 32px;
+}
+
+.dinein-welcome-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  max-width: 420px;
+  width: 100%;
+}
+
+.dinein-welcome-card h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.dinein-welcome-card > p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* --- Table Badge --- */
+.dinein-table-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border-radius: 12px;
+  padding: 12px 28px;
+  margin-bottom: 20px;
+}
+
+.dinein-table-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.dinein-table-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #000;
+  line-height: 1;
+}
+
+/* --- Form Field --- */
+.dinein-field {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.dinein-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.dinein-field input {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: var(--white);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.dinein-field input::placeholder {
+  color: #555;
+}
+
+.dinein-field input:focus {
+  border-color: var(--gold);
+}
+
+.dinein-field input.dinein-field--invalid {
+  border-color: #E40303;
+}
+
+.dinein-field-error {
+  display: block;
+  font-size: 0.8rem;
+  color: #E40303;
+  margin-top: 6px;
+  min-height: 1.2em;
+}
+
+/* --- Primary Button --- */
+.dinein-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dinein-btn:active {
+  transform: scale(0.97);
+}
+
+.dinein-btn--primary {
+  width: 100%;
+  padding: 16px 24px;
+  color: #000;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+}
+
+.dinein-btn--primary:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+
+.dinein-btn--primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Call the Waiter button --- */
+.dinein-btn--waiter {
+  width: 100%;
+  padding: 16px 24px;
+  color: #fff;
+  background: #c0392b;
+  border: none;
+}
+.dinein-btn--waiter:hover {
+  background: #e74c3c;
+}
+.dinein-btn--waiter:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+.dinein-btn--waiter-called {
+  background: #27ae60 !important;
+  opacity: 1 !important;
+}
+.dinein-btn--waiter-error {
+  background: #7f1d1d !important;
+  font-size: 0.85rem;
+}
+
+/* --- Welcome action buttons --- */
+.dinein-welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* --- Footer --- */
+.dinein-welcome-footer {
+  margin-top: 32px;
+  font-size: 0.78rem;
+  color: #555;
+}
+
+/* --- Shared field styles for textarea --- */
+.dinein-field span,
+.dinein-field > label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.dinein-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--white);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+.dinein-field textarea:focus { border-color: var(--gold); }
+.dinein-field textarea::placeholder { color: #555; }
+
+/* ========== TOP BAR ========== */
+.dinein-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.dinein-topbar-left { display: flex; align-items: center; gap: 10px; }
+.dinein-topbar-table {
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--gold);
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.dinein-topbar-name { font-size: 0.9rem; color: var(--text-muted); }
+.dinein-topbar-logo { height: 32px; width: auto; }
+
+.dinein-topbar-waiter {
+  background: #8B2020;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s, opacity 0.2s;
+}
+.dinein-topbar-waiter:active { opacity: 0.8; }
+.dinein-topbar-waiter.dinein-btn--waiter-called {
+  background: #1a6b35;
+}
+.dinein-topbar-waiter.dinein-btn--waiter-error {
+  background: #cc3333;
+}
+.dinein-topbar-waiter:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.dinein-back-btn {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ========== CATEGORY TABS ========== */
+.dinein-cats-wrap {
+  position: sticky;
+  top: 53px;
+  z-index: 99;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.dinein-cats {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+.dinein-cats::-webkit-scrollbar { display: none; }
+
+/* Fade edges — indicate more content to scroll */
+.dinein-cats-wrap::before,
+.dinein-cats-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 1px;
+  width: 40px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.dinein-cats-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 20%, transparent);
+}
+.dinein-cats-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 20%, transparent);
+}
+.dinein-cats-wrap.can-scroll-left::before { opacity: 1; }
+.dinein-cats-wrap.can-scroll-right::after { opacity: 1; }
+
+/* Arrow buttons */
+.dinein-cats-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--gold);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1;
+  padding: 0;
+}
+.dinein-cats-arrow:hover {
+  background: rgba(200,168,78,0.15);
+  border-color: var(--gold);
+}
+.dinein-cats-arrow--left { left: 4px; }
+.dinein-cats-arrow--right { right: 4px; }
+.dinein-cats-wrap.can-scroll-left .dinein-cats-arrow--left,
+.dinein-cats-wrap.can-scroll-right .dinein-cats-arrow--right {
+  display: flex;
+}
+
+.dinein-cat-tab {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.dinein-cat-tab:hover { color: var(--white); border-color: #444; }
+.dinein-cat-tab.active {
+  color: #000;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ========== MENU GRID ========== */
+.dinein-menu-grid {
+  padding: 16px;
+  padding-bottom: 100px;
+}
+.dinein-loading { color: var(--text-muted); text-align: center; padding: 60px 20px; }
+
+.dinein-cat-section { margin-bottom: 32px; }
+.dinein-cat-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dinein-items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.dinein-item-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+  width: 100%;
+  color: inherit;
+  font: inherit;
+}
+.dinein-item-card:hover { border-color: var(--gold-dark); background: #1a1a1a; }
+.dinein-item-card.is-sold-out { opacity: 0.45; cursor: not-allowed; }
+
+.dinein-item-info { flex: 1; min-width: 0; }
+.dinein-item-name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+.dinein-item-desc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dinein-item-price {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-top: 4px;
+}
+.dinein-item-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.dinein-item-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ========== FLOATING CART BAR ========== */
+.dinein-cart-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  z-index: 200;
+}
+.dinein-cart-bar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.dinein-cart-bar-arrow {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+/* ========== ITEM MODAL ========== */
+.dinein-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.dinein-modal-overlay[hidden] { display: none; }
+
+.dinein-modal-panel {
+  width: 100%;
+  max-width: 500px;
+  max-height: 90dvh;
+  background: var(--bg-card);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.dinein-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: var(--white);
+  font-size: 1.4rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dinein-modal-scroll {
+  overflow-y: auto;
+  padding: 20px;
+  flex: 1;
+}
+
+.dinein-modal-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.dinein-modal-scroll h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+.dinein-modal-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* --- Modifier groups --- */
+.dinein-mod-group {
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.dinein-mod-group-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+}
+.dinein-mod-group-name { font-weight: 600; font-size: 0.9rem; }
+.dinein-mod-req {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.dinein-mod-req.req { background: rgba(200,168,78,0.2); color: var(--gold); }
+.dinein-mod-req.opt { color: var(--text-muted); }
+
+.dinein-mod-choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.dinein-mod-choice:last-child { border-bottom: none; }
+.dinein-mod-choice:hover { background: rgba(255,255,255,0.03); }
+.dinein-mod-choice.disabled { opacity: 0.35; cursor: not-allowed; }
+
+.dinein-mod-choice input { accent-color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
+.dinein-mod-choice-name { flex: 1; font-size: 0.9rem; }
+.dinein-mod-choice-price { font-size: 0.82rem; color: var(--gold); white-space: nowrap; }
+
+.dinein-mod-group-error {
+  color: #E40303;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  display: none;
+}
+.dinein-mod-group.has-error .dinein-mod-group-error { display: block; }
+.dinein-mod-group.has-error { border-color: #E40303; }
+
+/* --- Variation selector --- */
+.dinein-variations { margin-bottom: 20px; }
+.dinein-var-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.15s;
+}
+.dinein-var-option:hover { border-color: #444; }
+.dinein-var-option.active { border-color: var(--gold); background: rgba(200,168,78,0.08); }
+.dinein-var-option input { accent-color: var(--gold); width: 18px; height: 18px; }
+.dinein-var-name { flex: 1; font-size: 0.9rem; }
+.dinein-var-price { font-size: 0.88rem; font-weight: 600; color: var(--gold); }
+.dinein-var-option.disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* --- Note field inside modal --- */
+.dinein-modal-note {
+  margin-top: 16px;
+}
+.dinein-modal-note span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.dinein-modal-note textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--white);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: none;
+  outline: none;
+}
+.dinein-modal-note textarea:focus { border-color: var(--gold); }
+
+/* --- Modal footer (qty + add button) --- */
+.dinein-modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--border);
+}
+
+.dinein-qty {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.dinein-qty button {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dinein-qty button:hover { background: rgba(255,255,255,0.06); }
+.dinein-qty span {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.dinein-modal-add {
+  flex: 1;
+  padding: 12px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #000;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  transition: background 0.2s;
+}
+.dinein-modal-add:hover { background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
+
+/* ========== CART REVIEW SCREEN ========== */
+.dinein-cart-review {
+  padding: 20px 16px;
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
+  max-width: 500px;
+  margin: 0 auto;
+}
+.dinein-cart-review h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.dinein-cart-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.dinein-cart-line-qty {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.dinein-cart-line-qty button {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dinein-cart-line-qty button:hover { color: var(--white); }
+.dinein-cart-line-qty span {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.dinein-cart-line-info { flex: 1; min-width: 0; }
+.dinein-cart-line-name { font-weight: 600; font-size: 0.92rem; }
+.dinein-cart-line-detail {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.dinein-cart-line-price {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.dinein-cart-line-remove {
+  background: none;
+  border: none;
+  color: #E40303;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 2px 0;
+  margin-top: 4px;
+  font-family: 'Inter', sans-serif;
+}
+
+.dinein-cart-summary {
+  padding: 16px 0;
+  margin-bottom: 16px;
+}
+.dinein-cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.95rem;
+}
+.dinein-cart-summary-row.total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 6px;
+}
+
+.dinein-field--notes { margin-top: 12px; }
+
+.dinein-cart-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+  font-size: 0.95rem;
+}
+.dinein-cart-empty a { color: var(--gold); text-decoration: underline; }
+
+/* --- Order error message --- */
+.dinein-order-error {
+  color: #E40303;
+  font-size: 0.88rem;
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+/* ========== CONFIRMATION SCREEN ========== */
+.dinein-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80dvh;
+  padding: 40px 20px;
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
+  text-align: center;
+}
+.dinein-confirm-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #000;
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.dinein-confirmation h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+.dinein-confirm-number {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+.dinein-confirmation p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* --- Confirmation order details --- */
+.dinein-confirm-details {
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.dinein-confirm-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 0.88rem;
+}
+.dinein-confirm-line-qty {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+.dinein-confirm-line-name {
+  flex: 1;
+}
+.dinein-confirm-line-name small {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  margin-top: 1px;
+}
+.dinein-confirm-line-price {
+  color: var(--gold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.dinein-confirm-notes {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+}
+
+/* --- Session order history --- */
+.dinein-session-history {
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+.dinein-session-history h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.dinein-session-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.dinein-session-row.total {
+  font-weight: 700;
+  color: var(--white);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+/* --- Confirmation action buttons --- */
+.dinein-confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 20px;
+}
+.dinein-btn--secondary {
+  display: block;
+  width: 100%;
+  padding: 14px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-muted);
+  background: transparent;
+  transition: border-color 0.2s, color 0.2s;
+  text-align: center;
+}
+.dinein-btn--secondary:hover {
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+.dinein-confirm-auto-reset {
+  font-size: 0.78rem !important;
+  color: var(--text-muted) !important;
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+/* Body lock when modal is open */
+body.dinein-modal-open { overflow: hidden; }
+
+/* ========== RESPONSIVE ========== */
+
+/* --- Small phone (≤ 480px) --- */
+@media (max-width: 480px) {
+  .dinein-welcome {
+    padding: 24px 16px;
+  }
+  .dinein-welcome-logo img {
+    width: 180px;
+    margin-bottom: 24px;
+  }
+  .dinein-welcome-card {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+  .dinein-welcome-card h1 {
+    font-size: 1.65rem;
+  }
+  .dinein-table-number {
+    font-size: 2rem;
+  }
+  /* Ensure touch targets meet 44px minimum */
+  .dinein-cart-line-qty button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+}
+
+/* --- Tablet and up (≥ 600px) --- */
+@media (min-width: 600px) {
+  .dinein-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dinein-modal-panel {
+    border-radius: 20px;
+    margin-bottom: 20px;
+    max-height: 85dvh;
+  }
+  .dinein-modal-overlay {
+    align-items: center;
+  }
+  .dinein-cart-review {
+    max-width: 600px;
+  }
+  .dinein-confirm-details,
+  .dinein-session-history {
+    max-width: 460px;
+  }
+  .dinein-confirm-actions {
+    max-width: 340px;
+  }
+}
+
+/* --- Tablet portrait and wider (≥ 768px) --- */
+@media (min-width: 768px) {
+  .dinein-welcome-card {
+    max-width: 480px;
+    padding: 48px 40px;
+  }
+  .dinein-welcome-logo img {
+    width: 260px;
+  }
+  .dinein-cat-tab {
+    font-size: 0.88rem;
+    padding: 10px 20px;
+  }
+  .dinein-cat-title {
+    font-size: 1.5rem;
+  }
+  .dinein-item-card {
+    padding: 14px 16px;
+  }
+  .dinein-item-name {
+    font-size: 1rem;
+  }
+  .dinein-item-img {
+    width: 80px;
+    height: 80px;
+  }
+  .dinein-topbar {
+    padding: 12px 24px;
+  }
+  .dinein-cats {
+    padding: 10px 24px;
+  }
+  .dinein-menu-grid {
+    padding: 20px 24px;
+    padding-bottom: 100px;
+  }
+  .dinein-modal-panel {
+    max-width: 540px;
+  }
+}
+
+/* --- Large tablet / landscape (≥ 900px) --- */
+@media (min-width: 900px) {
+  .dinein-items-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .dinein-cart-review {
+    max-width: 680px;
+  }
+  .dinein-confirm-details,
+  .dinein-session-history {
+    max-width: 520px;
+  }
+}
+
+/* --- Landscape phone (short viewport) — last so it overrides tablet rules --- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .dinein-welcome {
+    min-height: auto;
+    padding: 16px 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .dinein-welcome-logo {
+    width: 100%;
+    text-align: center;
+  }
+  .dinein-welcome-logo img {
+    width: 140px;
+    margin-bottom: 0;
+  }
+  .dinein-welcome-card {
+    padding: 20px 24px;
+    max-width: 380px;
+  }
+  .dinein-welcome-card h1 {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+  .dinein-welcome-card > p {
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+  .dinein-table-badge {
+    padding: 8px 20px;
+    margin-bottom: 12px;
+  }
+  .dinein-table-number {
+    font-size: 1.6rem;
+  }
+  .dinein-welcome-footer {
+    margin-top: 12px;
+  }
+  .dinein-welcome-actions {
+    margin-top: 12px;
+  }
+  .dinein-btn--primary,
+  .dinein-btn--waiter {
+    padding: 12px 20px;
+  }
+  .dinein-field {
+    margin-bottom: 12px;
+  }
+  .dinein-confirmation {
+    min-height: auto;
+    padding: 24px 20px;
+  }
+  .dinein-confirm-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+  .dinein-confirmation h2 {
+    font-size: 1.4rem;
+  }
+}

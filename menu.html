@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | RMS</title>
+  <meta name="description" content="Explore our full food and drink menu. From gourmet burgers to craft cocktails at RMS.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/site/food-drinks-photography-1600.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css?v=20261104f">
+  <link rel="stylesheet" href="api/site-features.php">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="./" class="logo"><img src="images/logo.png" alt="RMS" width="360" height="220"></a>
+      <nav class="nav">
+        <a href="./">Home</a><a href="events.html">Events</a><a href="menu.html" class="active">Menu</a>
+        <a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a><a href="gallery.html">Gallery</a>
+        <a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html#reserve" class="btn-reserve">Reserve A Table</a>
+      <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav"><button class="mobile-nav-close" aria-label="Close menu">&times;</button><a href="./">Home</a><a href="events.html">Events</a><a href="menu.html">Menu</a><a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a><a href="gallery.html">Gallery</a><a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+
+  <section class="page-banner">
+    <div class="page-banner-bg" style="background-image: url('images/site/food-drinks-photography-1600.webp');"></div>
+    <div class="page-banner-content">
+      <span class="section-label">Taste The Experience</span>
+      <h1>Our Menu</h1>
+      <p>Exceptional food made fresh every day, paired with craft cocktails and cold brews.</p>
+      <div class="breadcrumb"><a href="./">Home</a> <span>/</span> <span>Menu</span></div>
+    </div>
+  </section>
+
+  <!-- HAPPY HOUR TICKER (details from the Square site's Happy Hour Menu page) -->
+  <a class="hh-ticker" href="#happy-hour" aria-label="Happy Hour every day 4 to 6:45 PM. See the Happy Hour menu.">
+    <span class="hh-ticker-label">
+      <span class="hh-ticker-dot"></span>
+      <span data-hh-status data-hh-idle="Happy Hour &middot; Daily 4&ndash;6:45 PM">Happy Hour &middot; Daily 4&ndash;6:45 PM</span>
+    </span>
+    <span class="hh-ticker-track" aria-hidden="true">
+      <span class="hh-ticker-items">
+        <span>Mini Nachos <b>$6.99</b></span>
+        <span>Mexican Street Tacos <b>$6</b></span>
+        <span>Champ Slider &amp; Fries <b>$6.99</b></span>
+        <span>BBQ Pork Slider &amp; Fries <b>$6.99</b></span>
+        <span>4 oz. Burger &amp; Fries <b>$6.99</b></span>
+        <span>Bacon Cheese Dog &amp; Fries <b>$6.99</b></span>
+        <span>Wings (5) <b>$6.99</b></span>
+        <span>Chicken Quesadilla <b>$11.99</b></span>
+        <span>Sides from <b>$3</b></span>
+        <span class="hh-ticker-cta">See the Happy Hour menu &rarr;</span>
+      </span>
+    </span>
+  </a>
+  <div class="pride-divider"></div>
+
+  <!-- ONLINE ORDERING: live Square menu (js/order.js + api/). Drinks below are the bar menu. -->
+  <nav class="menu-nav" aria-label="Menu categories">
+    <div class="menu-nav-inner" id="menu-nav">
+      <a href="#margaritas">Margaritas</a>
+      <a href="#martinis">Martinis</a>
+      <a href="#cocktails">Cocktails</a>
+      <a href="#zero-alc">Zero Alc-Tails</a>
+      <a href="#frozen">Frozen</a>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="order-status" id="order-status" aria-live="polite"></div>
+
+      <!-- HAPPY HOUR (from the Square site's Happy Hour Menu page) -->
+      <div class="happy-hour" id="happy-hour">
+        <div class="happy-hour-head">
+          <span class="section-label">Every Day &middot; 4 PM &ndash; 6:45 PM</span>
+          <h2 class="section-title">Happy Hour <em>Menu</em></h2>
+          <p>Some of our most popular items, made and specially priced.</p>
+          <span class="happy-hour-live" data-hh-status hidden></span>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Mini Nachos</h4>
+              <p class="menu-item-extra">Add chicken +$4 &middot; add beef +$6</p>
+            </div>
+            <div class="menu-item-price"><span>$6.99</span></div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Mexican Street Tacos</h4>
+              <p>Chicken or pork</p>
+            </div>
+            <div class="menu-item-price"><span>$6</span></div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chicken Quesadilla</h4>
+            </div>
+            <div class="menu-item-price"><span>$11.99</span></div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>BBQ Pork Slider &amp; Fries</h4>
+              <p>One slider with fries</p>
+            </div>
+            <div class="menu-item-price"><span>$6.99</span></div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Champ Slider &amp; Fries</h4>
+              <p>One slider with fries</p>
+            </div>
+            <div class="menu-item-price"><span>$6.99</span></div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>4 oz. Burger &amp; Fries</h4>
+            </div>
+            <div class="menu-item-price"><span>$6.99</span></div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Bacon Cheese Dog &amp; Fries</h4>
+            </div>
+            <div class="menu-item-price"><span>$6.99</span></div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Wings (5)</h4>
+              <p>Mild, hot or BBQ, with bleu cheese or ranch</p>
+            </div>
+            <div class="menu-item-price"><span>$6.99</span></div>
+          </div>
+        </div>
+        <div class="happy-hour-sides">
+          <span>Side Fries <strong>$3</strong></span>
+          <span>Side Onion Rings <strong>$4</strong></span>
+          <span>Side Salad <strong>$3</strong></span>
+        </div>
+      </div>
+
+      <div id="order-menu" class="order-menu">
+        <p class="order-loading">Loading our menu&hellip;</p>
+      </div>
+
+      <div class="menu-advisory">
+        <p><sup class="menu-raw">*</sup> Consuming raw or undercooked meats, poultry, seafood, shellfish or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.</p>
+        <p>Before placing your order, please inform your server if anyone in your party has a food allergy (such as nuts or fish) or any other dietary restrictions.</p>
+        <p>Any changes or substitutions are subject to additional charges. Additional charge for extra dressings &amp; sauces.</p>
+        <p>A 3% surcharge will be added to all credit card transactions (debit cards excluded), which does not exceed the cost of acceptance.</p>
+      </div>
+
+      <!-- DRINKS (not sold online) -->
+      <div id="drinks" class="menu-drinks-anchor"></div>
+      <div class="menu-category" id="margaritas">
+        <div class="menu-category-header">
+          <h3>Margaritas</h3>
+          <div class="line"></div>
+        </div>
+        <p class="menu-category-note">Frozen upon request. 2-4-1 does not apply.</p>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Altos Ultimate Margaritas</h4>
+              <p>Altos premium silver tequila, Oasis ultimate margarita. Pick a flavor of Island Oasis fruit: strawberry, passion fruit, mango, blueberry pomegranate or banana.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Espol&ograve;n Passionate Lover-Rita</h4>
+              <p>Espol&ograve;n silver tequila, Island Oasis fresh passion fruit, Oasis ultimate margarita</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$20</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tropical Mango Margarita</h4>
+              <p>Patr&oacute;n silver tequila, Island Oasis fresh fruit mango, Oasis ultimate margarita</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$23</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Altos Coco-Colada-Rita</h4>
+              <p>Altos silver tequila, Island Oasis ultimate pi&ntilde;a colada, Island Oasis ultimate margarita. Tasty &amp; tropical.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Blueberry Pomegranate-Rita</h4>
+              <p>Altos reposado tequila, pomegranate pucker, Island Oasis fresh blueberry pomegranate, Oasis ultimate margarita</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$20</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Espol&ograve;n Watermelon Silver Palomas Margarita</h4>
+              <p>Espol&ograve;n silver tequila, Oasis watermelon, Oasis margarita, pink grapefruit. Shaken &amp; refreshing.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$20</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Champagne Margarita</h4>
+              <p>Altos silver tequila, Oasis ultimate margarita, topped with champagne. Nice &amp; fizzy.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category" id="martinis">
+        <div class="menu-category-header">
+          <h3>Martinis</h3>
+          <div class="line"></div>
+        </div>
+        <p class="menu-category-note">2-4-1 does not apply.</p>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Grape Cosmopolitan</h4>
+              <p>Three Olives grape vodka, triple sec, sour, lime. Shaken.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Stoli Pineapple Kamikaze-Tini</h4>
+              <p>Stoli Crush pineapple vodka, pineapple juice, splash of sour &amp; lime. Shaken &amp; delish.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Ultimate Espresso Martini</h4>
+              <p>Three Olives espresso vodka, cr&egrave;me de cacao, Island Oasis cappuccino, splash of ice cream to make it dreamy &amp; delicious. Shaken &amp; frothy.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tropical Mango-Tini</h4>
+              <p>Absolut vodka, Island Oasis mango pur&eacute;e, splash of sour, lime &amp; shaken</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Stoli Blueberry Pomegranate-Tini</h4>
+              <p>Stoli blueberry vodka, Island Oasis fresh fruit blueberry pomegranate, splash of sour, lime. Berry good.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Espresso Dark Martini</h4>
+              <p>Three Olives espresso vodka, Absolut vanilla vodka, cr&egrave;me de cacao, Oasis cappuccino, splash of ice cream. Shaken &amp; amazing.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Absolut Tabasco-Tini</h4>
+              <p>Absolut Tabasco vodka, Altos silver tequila, bloody mary mix. Best of both worlds in one.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>RMS Stoli Flirtini</h4>
+              <p>Stoli Crush pineapple vodka, champagne, splash of pineapple juice, garnished with a cherry</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pistachio Ice Cream-Tini</h4>
+              <p>Absolut vanilla vodka, amaretto, Baileys Irish Cream, chocolate liqueur, Oasis ice cream, splash of blue cura&ccedil;ao</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Keylime-Tini</h4>
+              <p>Keylime cream liqueur, Absolut vanilla vodka, Island Oasis ice cream, Trader Vic&rsquo;s white chocolate. Shaken to perfection.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Ultimate Lychee-Tini</h4>
+              <p>Premium lychee Haiken liqueur, Absolut vanilla vodka, splash of sour, lime, splash of blue cura&ccedil;ao. Simply heaven.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$19</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Georgia Peach-Tini</h4>
+              <p>Absolut vodka, Oasis peach pur&eacute;e, splash of sour, lime. Shaken, not stirred.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Watermelon-Tini</h4>
+              <p>Absolut vodka, Island Oasis watermelon, splash of sour, lime. Shaken &amp; delicious.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Coconut Espresso-Tini</h4>
+              <p>Three Olives espresso vodka, cr&egrave;me de cacao, Oasis pi&ntilde;a colada, ice cream, cappuccino</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category" id="cocktails">
+        <div class="menu-category-header">
+          <h3>Signature Cocktails</h3>
+          <div class="line"></div>
+        </div>
+        <p class="menu-category-note">2-4-1 does not apply.</p>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tito&rsquo;s Passion Fruit Smash</h4>
+              <p>Tito&rsquo;s Handmade vodka, Island Oasis passion fruit pur&eacute;e, Starry, agave, splash of Island Oasis margarita, topped with champagne</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Aperol Spritz</h4>
+              <p>Aperol, champagne, club soda, garnished with oranges</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$19</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pineapple Upside Down Cake</h4>
+              <p>Stoli Crush pineapple vodka, Stoli vanilla vodka, Island Oasis ice cream, Trader Vic&rsquo;s white chocolate, pineapple juice, splash of grenadine</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$17</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Malibu Pink Mai Tai</h4>
+              <p>Malibu Pink, hints of guava, pineapple, coconut, peach liqueur, splash of pineapple juice, lemonade. Pink is in.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$17</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Key West Rum Runner</h4>
+              <p>Bacardi rum, black raspberry brandy, Island Oasis rum runner, banana, blended, grenadine</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$17</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Watermelon Oasis Sangria</h4>
+              <p>Tito&rsquo;s vodka, Oasis watermelon pur&eacute;e, Oasis ultimate sangria, red wine. Shaken.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Lychee Pineapple Blitz</h4>
+              <p>Stoli Crush pineapple vodka, premium lychee liqueur, Trader Vic&rsquo;s white chocolate, pineapple juice &amp; splash of cranberry</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Hurricane Passion Fruit 2.0</h4>
+              <p>Bacardi silver rum, spiced rum, Island Oasis fresh passion fruit, orange juice, splash of lime, grenadine</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$17</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Black Raspberry Sangria</h4>
+              <p>Bacardi silver rum, black raspberry brandy, red wine, Island Oasis ultimate sangria. Shaken &amp; tasty.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$17</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Ptown Blitz</h4>
+              <p>Stoli blueberry vodka, rum, gin, triple sec, splash of blueberry pomegranate pur&eacute;e, sour, lime</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$17</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Cherry Sangria Fizz</h4>
+              <p>Three Olives cherry vodka, Island Oasis sangria, topped with champagne</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$17</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category" id="zero-alc">
+        <div class="menu-category-header">
+          <h3>Zero Alc-Tails 0%</h3>
+          <div class="line"></div>
+        </div>
+        <p class="menu-category-note">2-4-1 does not apply.</p>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>The Best Zero Alc Pi&ntilde;a Colada</h4>
+              <p>Oasis pi&ntilde;a colada, ice cream, pineapple juice. Blended yum.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$14</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pineapple Ginger Chili Spritz</h4>
+              <p>Pineapple juice, fresh lime juice, fresh jalape&ntilde;o peppers, ginger beer, splash of soda, Taj&iacute;n rim. Refreshing and slightly spicy.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$14</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Watermelon Basil Spritz</h4>
+              <p>Oasis watermelon pur&eacute;e, fresh basil, fresh limes squeezed, soda water. Refreshing.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$14</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category" id="frozen">
+        <div class="menu-category-header">
+          <h3>Frozen Drinks</h3>
+          <div class="line"></div>
+        </div>
+        <p class="menu-category-note">2-4-1 does not apply.</p>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>The Best Frozen Pi&ntilde;a Colada Ever</h4>
+              <p>Malibu coconut rum, Island Oasis pi&ntilde;a colada, Island Oasis ice cream, white chocolate liqueur, pineapple juice, blended to yumminess &amp; topped with a cherry</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Amazing Frozen Passion Fruit Coconut Colada</h4>
+              <p>Malibu coconut rum, Island Oasis passion fruit, pi&ntilde;a colada, pineapple juice</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Frozen Coco Banana Cabana</h4>
+              <p>Island Oasis fresh fruit banana, pi&ntilde;a colada, splash of ice cream, Malibu coconut, Bacardi rum, banana liqueur. Blended &amp; yummy.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Frozen Chocolate Cappuccino Mudslide</h4>
+              <p>360 chocolate vodka, Absolut vanilla vodka, Three Olives espresso vodka, white chocolate liqueur, chocolate syrup, Island Oasis cappuccino. Blended, just out of this world.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Frozen Espresso Banana Chino</h4>
+              <p>Island Oasis fresh fruit banana, Island Oasis cappuccino, Three Olives espresso vodka, banana liqueur. Blended to perfection, just dreamy &amp; delicious.</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Frozen Fruit Supreme Daiquiri</h4>
+              <p>Island Oasis fresh fruit (choose one): strawberry, passion fruit, mango, banana, blueberry pomegranate or watermelon, with Bacardi silver rum</p>
+            </div>
+            <div class="menu-item-price">
+              <span>$18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to <em>Dine?</em></h2>
+      <p>Reserve your table or just walk in — we're serving all day, every day.</p>
+      <div class="cta-buttons">
+        <a href="contact.html#reserve" class="btn-primary">Reserve A Table</a>
+        <a href="contact.html" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="pride-divider"></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="./" class="logo"><img loading="lazy" decoding="async" src="images/logo.png" alt="RMS" width="360" height="220"></a><p class="footer-tagline">Dining, Drinks, Entertainment.<br>Simply unforgettable.</p><div class="footer-social"><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="./">Home</a></li><li><a href="events.html">Events</a></li><li><a href="menu.html">Menu</a></li><li><a href="entertainment.html">Entertainment</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+        <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a href="private-events.html">Private Events</a></li><li><a href="gift-cards.html">Gift Cards</a></li><li><a href="performers.html">Our Performers</a></li><li><a href="dancers.html">Meet Our Dancers</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html#reserve">Reservations</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Info</h4><div class="footer-contact-item"><span class="icon"><i class="fas fa-map-marker-alt"></i></span><p>2266 Wilton Drive<br>Wilton Manors, FL 33305</p></div><div class="footer-contact-item"><span class="icon"><i class="fas fa-phone"></i></span><a href="tel:+19545652526">(954) 565-2526</a></div><div class="footer-contact-item"><span class="icon"><i class="far fa-clock"></i></span><p>Mon - Sun<br>11:00 AM - 2:00 AM</p></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 RMS. All rights reserved.</p><p class="footer-credit">Website designed and developed by <a href="https://seoberg.com" target="_blank" rel="noopener">SEOBERG</a></p></div>
+    </div>
+  </footer>
+  <div class="mobile-cta-bar">
+    <a href="tel:+19545652526" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="contact.html#reserve" class="cta-reserve">Reserve A Table</a>
+  </div>
+  <script src="js/main.js?v=20260925"></script>
+  <script src="js/order.js?v=20261105"></script>
+  <script src="js/chat.js?v=20261016b"></script>
+</body>
+</html>

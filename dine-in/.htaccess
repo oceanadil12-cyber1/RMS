@@ -1,0 +1,3 @@
+Options -Indexes
+# The site-wide .htaccess says DirectoryIndex index.html; the table page is PHP.
+DirectoryIndex index.php

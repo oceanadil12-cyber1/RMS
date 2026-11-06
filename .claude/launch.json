@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "rms-site",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", ".claude\\serve.bat"],
+      "port": 3000
+    },
+    {
+      "name": "rms-site-3010",
+      "runtimeExecutable": "C:\\Users\\20607\\AppData\\Local\\Microsoft\\WinGet\\Packages\\PHP.PHP.8.4_Microsoft.Winget.Source_8wekyb3d8bbwe\\php.exe",
+      "runtimeArgs": ["-S", "localhost:3010", "-t", ".", ".router.php"],
+      "port": 3010,
+      "autoPort": false
+    }
+  ]
+}

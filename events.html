@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | RMS</title>
+  <meta name="description" content="Live events, themed nights, drag shows, and unforgettable entertainment at RMS in Wilton Manors.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/site/hero-banner-crowd-scene-1-1600.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css?v=20261104f">
+  <link rel="stylesheet" href="api/site-features.php">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="./" class="logo"><img src="images/logo.png" alt="RMS" width="360" height="220"></a>
+      <nav class="nav">
+        <a href="./">Home</a>
+        <a href="events.html" class="active">Events</a>
+        <a href="menu.html">Menu</a>
+        <a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html#reserve" class="btn-reserve">Reserve A Table</a>
+      <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    <a href="./">Home</a><a href="events.html">Events</a><a href="menu.html">Menu</a>
+    <a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a><a href="gallery.html">Gallery</a>
+    <a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+  </div>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <div class="page-banner-bg" style="background-image: url('images/site/hero-banner-crowd-scene-1-1600.webp');"></div>
+    <div class="page-banner-content">
+      <span class="section-label">What's Happening</span>
+      <h1>Events</h1>
+      <p>Live performances, themed nights, and community gatherings every week.</p>
+      <div class="breadcrumb"><a href="./">Home</a> <span>/</span> <span>Events</span></div>
+    </div>
+  </section>
+
+  <!-- HAPPY HOUR TICKER (details from the Square site's Happy Hour Menu page) -->
+  <a class="hh-ticker" href="menu.html#happy-hour" aria-label="Happy Hour every day 4 to 6:45 PM. See the Happy Hour menu.">
+    <span class="hh-ticker-label">
+      <span class="hh-ticker-dot"></span>
+      <span data-hh-status data-hh-idle="Happy Hour &middot; Daily 4&ndash;6:45 PM">Happy Hour &middot; Daily 4&ndash;6:45 PM</span>
+    </span>
+    <span class="hh-ticker-track" aria-hidden="true">
+      <span class="hh-ticker-items">
+        <span>Mini Nachos <b>$6.99</b></span>
+        <span>Mexican Street Tacos <b>$6</b></span>
+        <span>Champ Slider &amp; Fries <b>$6.99</b></span>
+        <span>BBQ Pork Slider &amp; Fries <b>$6.99</b></span>
+        <span>4 oz. Burger &amp; Fries <b>$6.99</b></span>
+        <span>Bacon Cheese Dog &amp; Fries <b>$6.99</b></span>
+        <span>Wings (5) <b>$6.99</b></span>
+        <span>Chicken Quesadilla <b>$11.99</b></span>
+        <span>Sides from <b>$3</b></span>
+        <span class="hh-ticker-cta">See the Happy Hour menu &rarr;</span>
+      </span>
+    </span>
+  </a>
+  <div class="pride-divider"></div>
+
+  <!-- WEEKLY LINEUP (from the Square site's Weekly Events page; posters in images/events/) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Live Entertainment Every Night</span>
+        <h2 class="section-title">Weekly <em>Lineup</em></h2>
+        <p class="section-desc">Live music, drag, karaoke, Latin nights and DJs &mdash; seven nights a week.</p>
+        <div class="gold-line"></div>
+      </div>
+
+      <ul class="ev-perks">
+        <li><i class="fas fa-ticket-alt" aria-hidden="true"></i> No cover, every night</li>
+        <li><i class="fas fa-glass-martini-alt" aria-hidden="true"></i> 2-for-1 drinks until 8 PM</li>
+        <li><i class="fas fa-utensils" aria-hidden="true"></i> Kitchen open late</li>
+        <li><i class="fas fa-music" aria-hidden="true"></i> Live music, drag &amp; DJs</li>
+      </ul>
+
+      <!-- The day tabs, the seven day panels and the week-at-a-glance grid are written by the
+           admin panel (Admin > Events > Publish). Change events there: the text between the
+           admin:events markers is replaced on every publish. Everything else on this page is yours to edit. -->
+      <!-- admin:events:lineup -->
+      <div class="ev-tabs" role="tablist" aria-label="Day of the week" hidden>
+        <button type="button" role="tab" id="tab-mon" aria-controls="ev-mon" aria-selected="false" data-day="mon"><span class="ev-tab-day">Mon</span><span class="ev-tab-count">3 events</span></button>
+        <button type="button" role="tab" id="tab-tue" aria-controls="ev-tue" aria-selected="false" data-day="tue"><span class="ev-tab-day">Tue</span><span class="ev-tab-count">3 events</span></button>
+        <button type="button" role="tab" id="tab-wed" aria-controls="ev-wed" aria-selected="false" data-day="wed"><span class="ev-tab-day">Wed</span><span class="ev-tab-count">3 events</span></button>
+        <button type="button" role="tab" id="tab-thu" aria-controls="ev-thu" aria-selected="false" data-day="thu"><span class="ev-tab-day">Thu</span><span class="ev-tab-count">3 events</span></button>
+        <button type="button" role="tab" id="tab-fri" aria-controls="ev-fri" aria-selected="false" data-day="fri"><span class="ev-tab-day">Fri</span><span class="ev-tab-count">6 events</span></button>
+        <button type="button" role="tab" id="tab-sat" aria-controls="ev-sat" aria-selected="false" data-day="sat"><span class="ev-tab-day">Sat</span><span class="ev-tab-count">5 events</span></button>
+        <button type="button" role="tab" id="tab-sun" aria-controls="ev-sun" aria-selected="false" data-day="sun"><span class="ev-tab-day">Sun</span><span class="ev-tab-count">3 events</span></button>
+      </div>
+
+      <div class="ev-day" id="ev-mon" role="tabpanel" aria-labelledby="tab-mon" data-day="mon">
+        <h3 class="ev-day-title">Monday</h3>
+        <div class="ev-grid">
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/soulfree-lounge.webp" alt="The Soulfree Lounge poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">6:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>The Soulfree Lounge</h4>
+              <p class="ev-host">Mailyn Soulfree</p>
+              <p class="ev-desc">Kick off the week with soulful live vocals in an intimate lounge setting.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/drink-draw-dine.webp" alt="Drink · Draw · Dine poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">8:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Drink · Draw · Dine</h4>
+              <p class="ev-host">Hosted by Daisy Deadpetals</p>
+              <p class="ev-desc">Sip, sketch and snack — a laid-back creative night with Damien Lenore.</p>
+              <ul class="ev-tags"><li>Hosted</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/5-minutes-of-fame.webp" alt="5 Minutes of Fame Karaoke poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">10:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>5 Minutes of Fame Karaoke</h4>
+              <p class="ev-host">Hosted by TP Lords</p>
+              <p class="ev-desc">Grab the mic and take the stage — every time you sing, you get a shot.</p>
+              <ul class="ev-tags"><li>Karaoke</li><li>No Cover</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ev-day" id="ev-tue" role="tabpanel" aria-labelledby="tab-tue" data-day="tue">
+        <h3 class="ev-day-title">Tuesday</h3>
+        <div class="ev-grid">
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/groove-session.webp" alt="The Groove Session poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">7:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>The Groove Session</h4>
+              <p class="ev-host">LeNora Jaye</p>
+              <p class="ev-desc">Soul, jazz, Motown, disco and R&amp;B — dinner and a show. Reservations recommended.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>Dinner &amp; a Show</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/drag-bingo.webp" alt="Drag Bingo poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">10:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Drag Bingo</h4>
+              <p class="ev-host">Hosted by London Adour</p>
+              <p class="ev-desc">Bingo with a twist and fun prizes to win. $6 margaritas, $9 Grey Goose.</p>
+              <ul class="ev-tags"><li>Drag</li><li>Prizes</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/fresh-fame.webp" alt="Fresh Fame poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">11:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Fresh Fame</h4>
+              <p class="ev-host">Hosted by Aaliyah Jae &amp; Jah’Syra</p>
+              <p class="ev-desc">Every other Tuesday — the next generation of drag stars battles for the crown.</p>
+              <ul class="ev-tags"><li>Drag Competition</li><li>No Cover</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ev-day" id="ev-wed" role="tabpanel" aria-labelledby="tab-wed" data-day="wed">
+        <h3 class="ev-day-title">Wednesday</h3>
+        <div class="ev-grid">
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/jazzy-happy-hour.webp" alt="Jazzy Happy Hour poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">5:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Jazzy Happy Hour</h4>
+              <p class="ev-host">with Tony &amp; Gloria</p>
+              <p class="ev-desc">Your favorite songs performed live — the perfect midweek happy hour.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>Happy Hour</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/pitch-please.webp" alt="Pitch Please! poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">7:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Pitch Please!</h4>
+              <p class="ev-host">with Natasha Ricketts</p>
+              <p class="ev-desc">Big voices and bigger personalities — a live singing showcase.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/strip-for-a-tip.webp" alt="Strip for a Tip poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">11:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Strip for a Tip</h4>
+              <p class="ev-host">Hosted by Aaliyah Jae · DJ Maikel</p>
+              <p class="ev-desc">Get paid to dance — amateur night with $200 cash up for grabs.</p>
+              <ul class="ev-tags"><li>Contest</li><li>Win Cash</li><li>No Cover</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ev-day" id="ev-thu" role="tabpanel" aria-labelledby="tab-thu" data-day="thu">
+        <h3 class="ev-day-title">Thursday</h3>
+        <div class="ev-grid">
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/tumbao-thursday.webp" alt="Tumbao Thursday poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">7:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Tumbao Thursday</h4>
+              <p class="ev-host">J Blue</p>
+              <p class="ev-desc">Live music to start the night, plus go-go dancers from 11 PM.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>$5 Long Islands</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/whats-the-tea.webp" alt="What’s the Tea? poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">10:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>What’s the Tea?</h4>
+              <p class="ev-host">Hosted by TP Lords</p>
+              <p class="ev-desc">Watch out for the big girls — a night of drag, comedy and all the tea.</p>
+              <ul class="ev-tags"><li>Drag</li><li>$5 Long Islands</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/noche-picante.webp" alt="Noche Picante poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">11:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Noche Picante</h4>
+              <p class="ev-host">Teresita La Caliente · DJ Maikel</p>
+              <p class="ev-desc">Latin night heat with go-go dancers until close.</p>
+              <ul class="ev-tags"><li>Latin Night</li><li>$5 Long Islands</li><li>No Cover</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ev-day" id="ev-fri" role="tabpanel" aria-labelledby="tab-fri" data-day="fri">
+        <h3 class="ev-day-title">Friday</h3>
+        <div class="ev-grid">
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/tony-gloria.webp" alt="Tony &amp; Gloria poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">5:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Tony &amp; Gloria</h4>
+              <p class="ev-host">Live in the Lounge</p>
+              <p class="ev-desc">Your favorite songs performed live to start the weekend.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/brian-mason.webp" alt="Brian Mason poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">6:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Brian Mason</h4>
+              <p class="ev-host">Live music</p>
+              <p class="ev-desc">Live vocals and 2-for-1 drinks.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>2-4-1 Drinks</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/drag-race-viewing.webp" alt="RuPaul’s Drag Race Viewing Party poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">8:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>RuPaul’s Drag Race Viewing Party</h4>
+              <p class="ev-host">Hosted by RMS’s Angels</p>
+              <p class="ev-desc">Watch the new episode in the Lounge and cheer on RMS superstar Mia Starr.</p>
+              <ul class="ev-tags"><li>Viewing Party</li><li>2-4-1 Drinks</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/rms-angels.webp" alt="RMS’s Angels poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">9:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>RMS’s Angels</h4>
+              <p class="ev-host">Hosted by the Angels</p>
+              <p class="ev-desc">The Angels take the stage for a full night of drag.</p>
+              <ul class="ev-tags"><li>Drag Show</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/noche-sucia.webp" alt="Noche Sucia poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">10:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Noche Sucia</h4>
+              <p class="ev-host">Teresita La Caliente · DJ Maikel</p>
+              <p class="ev-desc">Noche Latina with go-go dancers and DJ Maikel on the decks.</p>
+              <ul class="ev-tags"><li>Latin Night</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/sweatboxx.webp" alt="Sweatboxx poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">10:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Sweatboxx</h4>
+              <p class="ev-host">DJ Maikel · in the Lounge</p>
+              <p class="ev-desc">Go-go dancers, a packed dance floor and 2-for-1 drinks.</p>
+              <ul class="ev-tags"><li>DJ</li><li>Go-Go Dancers</li><li>2-4-1 Drinks</li><li>No Cover</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ev-day" id="ev-sat" role="tabpanel" aria-labelledby="tab-sat" data-day="sat">
+        <h3 class="ev-day-title">Saturday</h3>
+        <div class="ev-grid">
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/megamix-saturdays.webp" alt="Megamix Saturdays poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">6:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Megamix Saturdays</h4>
+              <p class="ev-host">Brian Mason &amp; Natasha Ricketts</p>
+              <p class="ev-desc">Two powerhouse vocalists, one megamix of hits.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>2-4-1 Drinks</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/diva-on-demand.webp" alt="Diva on Demand poster" width="480" height="480" loading="lazy" decoding="async">
+              <span class="ev-time">7:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Diva on Demand</h4>
+              <p class="ev-host">Jennifer McClain · in the Lounge</p>
+              <p class="ev-desc">Diva anthems performed live — request your favorites.</p>
+              <ul class="ev-tags"><li>Live Music</li><li>2-4-1 Drinks</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/saturday-night-rewind.webp" alt="Saturday Night Rewind poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">8:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Saturday Night Rewind</h4>
+              <p class="ev-host">Hosted by London Adour · DJ Maikel</p>
+              <p class="ev-desc">A throwback drag show packed with the hits you love.</p>
+              <ul class="ev-tags"><li>Drag Show</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/noche-loka.webp" alt="Noche Loka poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">10:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Noche Loka</h4>
+              <p class="ev-host">con Las Globos · DJ Maikel</p>
+              <p class="ev-desc">Latin party night with 2-for-1 drinks all night.</p>
+              <ul class="ev-tags"><li>Latin Night</li><li>2-4-1 All Night</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/sickening-beats.webp" alt="Sick’ning Beats poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">10:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Sick’ning Beats</h4>
+              <p class="ev-host">DJ Gustavo Farias</p>
+              <p class="ev-desc">Dance until late, with go-go dancers from 11 PM and 2-for-1 drinks all night.</p>
+              <ul class="ev-tags"><li>DJ</li><li>Go-Go Dancers</li><li>No Cover</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ev-day" id="ev-sun" role="tabpanel" aria-labelledby="tab-sun" data-day="sun">
+        <h3 class="ev-day-title">Sunday</h3>
+        <div class="ev-grid">
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/spicy-fusion.webp" alt="Spicy Fusion poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">6:00 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Spicy Fusion</h4>
+              <p class="ev-host">Steven Ross-Dybash &amp; Franklin Llovera</p>
+              <p class="ev-desc">A spicy Sunday show to wind down the weekend.</p>
+              <ul class="ev-tags"><li>Live Show</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/transtasy.webp" alt="Transtasy poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">8:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>Transtasy</h4>
+              <p class="ev-host">Hosted by Ariesela &amp; Kat Wilderness</p>
+              <p class="ev-desc">A showcase of South Florida’s trans performers.</p>
+              <ul class="ev-tags"><li>Drag Show</li><li>No Cover</li></ul>
+            </div>
+          </article>
+          <article class="ev-card">
+            <div class="ev-poster">
+              <img src="images/events/house-of-rms.webp" alt="The House of RMS poster" width="480" height="600" loading="lazy" decoding="async">
+              <span class="ev-time">11:30 PM</span>
+            </div>
+            <div class="ev-body">
+              <h4>The House of RMS</h4>
+              <p class="ev-host">Hosted by Jah’Syra</p>
+              <p class="ev-desc">The house queens close out the week in style.</p>
+              <ul class="ev-tags"><li>Drag Show</li><li>No Cover</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+      <!-- /admin:events:lineup -->
+
+      <!-- Week at a glance -->
+      <div class="ev-glance">
+        <h3>The Week at a Glance</h3>
+        <!-- admin:events:glance -->
+        <div class="ev-glance-grid">
+          <div class="ev-glance-day" data-day="mon">
+            <h4>Monday</h4>
+            <ul>
+              <li><a href="#ev-mon" data-goto="mon"><span>6:30 PM</span> The Soulfree Lounge</a></li>
+              <li><a href="#ev-mon" data-goto="mon"><span>8:30 PM</span> Drink · Draw · Dine</a></li>
+              <li><a href="#ev-mon" data-goto="mon"><span>10:00 PM</span> 5 Minutes of Fame Karaoke</a></li>
+            </ul>
+          </div>
+          <div class="ev-glance-day" data-day="tue">
+            <h4>Tuesday</h4>
+            <ul>
+              <li><a href="#ev-tue" data-goto="tue"><span>7:30 PM</span> The Groove Session</a></li>
+              <li><a href="#ev-tue" data-goto="tue"><span>10:00 PM</span> Drag Bingo</a></li>
+              <li><a href="#ev-tue" data-goto="tue"><span>11:30 PM</span> Fresh Fame</a></li>
+            </ul>
+          </div>
+          <div class="ev-glance-day" data-day="wed">
+            <h4>Wednesday</h4>
+            <ul>
+              <li><a href="#ev-wed" data-goto="wed"><span>5:00 PM</span> Jazzy Happy Hour</a></li>
+              <li><a href="#ev-wed" data-goto="wed"><span>7:00 PM</span> Pitch Please!</a></li>
+              <li><a href="#ev-wed" data-goto="wed"><span>11:30 PM</span> Strip for a Tip</a></li>
+            </ul>
+          </div>
+          <div class="ev-glance-day" data-day="thu">
+            <h4>Thursday</h4>
+            <ul>
+              <li><a href="#ev-thu" data-goto="thu"><span>7:00 PM</span> Tumbao Thursday</a></li>
+              <li><a href="#ev-thu" data-goto="thu"><span>10:00 PM</span> What’s the Tea?</a></li>
+              <li><a href="#ev-thu" data-goto="thu"><span>11:00 PM</span> Noche Picante</a></li>
+            </ul>
+          </div>
+          <div class="ev-glance-day" data-day="fri">
+            <h4>Friday</h4>
+            <ul>
+              <li><a href="#ev-fri" data-goto="fri"><span>5:00 PM</span> Tony &amp; Gloria</a></li>
+              <li><a href="#ev-fri" data-goto="fri"><span>6:30 PM</span> Brian Mason</a></li>
+              <li><a href="#ev-fri" data-goto="fri"><span>8:00 PM</span> RuPaul’s Drag Race Viewing Party</a></li>
+              <li><a href="#ev-fri" data-goto="fri"><span>9:00 PM</span> RMS’s Angels</a></li>
+              <li><a href="#ev-fri" data-goto="fri"><span>10:00 PM</span> Noche Sucia</a></li>
+              <li><a href="#ev-fri" data-goto="fri"><span>10:00 PM</span> Sweatboxx</a></li>
+            </ul>
+          </div>
+          <div class="ev-glance-day" data-day="sat">
+            <h4>Saturday</h4>
+            <ul>
+              <li><a href="#ev-sat" data-goto="sat"><span>6:30 PM</span> Megamix Saturdays</a></li>
+              <li><a href="#ev-sat" data-goto="sat"><span>7:00 PM</span> Diva on Demand</a></li>
+              <li><a href="#ev-sat" data-goto="sat"><span>8:30 PM</span> Saturday Night Rewind</a></li>
+              <li><a href="#ev-sat" data-goto="sat"><span>10:00 PM</span> Noche Loka</a></li>
+              <li><a href="#ev-sat" data-goto="sat"><span>10:00 PM</span> Sick’ning Beats</a></li>
+            </ul>
+          </div>
+          <div class="ev-glance-day" data-day="sun">
+            <h4>Sunday</h4>
+            <ul>
+              <li><a href="#ev-sun" data-goto="sun"><span>6:00 PM</span> Spicy Fusion</a></li>
+              <li><a href="#ev-sun" data-goto="sun"><span>8:30 PM</span> Transtasy</a></li>
+              <li><a href="#ev-sun" data-goto="sun"><span>11:30 PM</span> The House of RMS</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- /admin:events:glance -->
+        <p class="ev-note">Lineup and showtimes can change &mdash; follow <a href="https://www.instagram.com/" target="_blank" rel="noopener">@rms</a> for the latest.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Want to Host <em>Your Own Event?</em></h2>
+      <p>We offer private event packages for birthdays, celebrations, corporate events, and more.</p>
+      <div class="cta-buttons">
+        <a href="private-events.html" class="btn-primary">Private Events</a>
+        <a href="contact.html" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER (like "Stay in the Loop" on the Square site) — posts to api/subscribe.php -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay in the <em>Loop</em></h2>
+      <p>Get the latest on events, shows and specials when you sign up for our newsletter.</p>
+      <form class="newsletter-form" method="post" action="#" data-endpoint="api/subscribe.php" data-success="You're on the list! Watch your inbox for our next update." novalidate>
+        <label class="sr-only" for="nl-email-events">Email address</label>
+        <input id="nl-email-events" type="email" name="email" placeholder="Email" autocomplete="email" required>
+        <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="form-status" role="status" aria-live="polite" hidden></p>
+      <p class="newsletter-note">No spam &mdash; just the good stuff. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <div class="pride-divider"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./" class="logo"><img loading="lazy" decoding="async" src="images/logo.png" alt="RMS" width="360" height="220"></a>
+          <p class="footer-tagline">Dining, Drinks, Entertainment.<br>Simply unforgettable.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="./">Home</a></li><li><a href="events.html">Events</a></li><li><a href="menu.html">Menu</a></li><li><a href="entertainment.html">Entertainment</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+        <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a href="private-events.html">Private Events</a></li><li><a href="gift-cards.html">Gift Cards</a></li><li><a href="performers.html">Our Performers</a></li><li><a href="dancers.html">Meet Our Dancers</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html#reserve">Reservations</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Info</h4><div class="footer-contact-item"><span class="icon"><i class="fas fa-map-marker-alt"></i></span><p>2266 Wilton Drive<br>Wilton Manors, FL 33305</p></div><div class="footer-contact-item"><span class="icon"><i class="fas fa-phone"></i></span><a href="tel:+19545652526">(954) 565-2526</a></div><div class="footer-contact-item"><span class="icon"><i class="far fa-clock"></i></span><p>Mon - Sun<br>11:00 AM - 2:00 AM</p></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 RMS. All rights reserved.</p><p class="footer-credit">Website designed and developed by <a href="https://seoberg.com" target="_blank" rel="noopener">SEOBERG</a></p></div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta-bar">
+    <a href="tel:+19545652526" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="contact.html#reserve" class="cta-reserve">Reserve A Table</a>
+  </div>
+  <script src="js/main.js?v=20260925"></script>
+  <script src="js/events.js?v=20260929"></script>
+  <script src="js/chat.js?v=20261016b"></script>
+</body>
+</html>

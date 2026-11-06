@@ -1,0 +1,29 @@
+# ---- Secrets: never commit ----
+# Square access token + email settings (copy config.example.php to create it)
+api/config.php
+# The owner's launch settings (admin password, emails, chat keys): built into the upload
+# package by make-upload-package.ps1 from this computer's config.php, never committed
+api/site-settings.php
+# Earlier config.php copies kept by the admin's first-run screen, and its temporary file
+api/.config-*.php
+
+# ---- Server-generated ----
+# Menu cache and rate-limit files
+api/cache/
+# Customer form submissions (contact, reservations, newsletter CSVs), orders, the chat log,
+# and everything the admin panel saves (statuses, notes, activity, events working copy, backups, sessions)
+api/data/
+# Temporary copy of events.html while the admin publishes it (renamed into place a moment later)
+events.html.tmp*
+# Anthropic PHP SDK for the chat assistant (reinstall with: composer install, in api/)
+api/vendor/
+
+# ---- OS / editor clutter ----
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+*.bak
+.vscode/
+.idea/
+node_modules/

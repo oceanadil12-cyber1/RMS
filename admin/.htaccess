@@ -1,0 +1,9 @@
+# Admin panel (Apache / cPanel hosts): never listed, never indexed, and its PHP
+# includes can't be requested directly (they also refuse to run on their own).
+Options -Indexes
+# The site-wide .htaccess says DirectoryIndex index.html; the panel is PHP.
+DirectoryIndex index.php
+RedirectMatch 403 ^.*/admin/inc/.*$
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>

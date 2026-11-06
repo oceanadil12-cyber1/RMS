@@ -1,0 +1,467 @@
+/* Kitchen Display System — optimised for kitchen screens and touch */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg: #0a0a0c;
+    --surface: #141418;
+    --surface-hover: #1c1c22;
+    --border: #2a2a32;
+    --text: #e8e8ec;
+    --text-dim: #8888a0;
+    --text-muted: #5c5c70;
+
+    --blue: #3b82f6;
+    --blue-dim: #1e3a5f;
+    --amber: #f59e0b;
+    --amber-dim: #5c3d0a;
+    --red: #ef4444;
+    --red-dim: #5c1a1a;
+    --green: #22c55e;
+    --green-dim: #0d4a22;
+    --orange: #f97316;
+    --orange-dim: #5c2e08;
+    --purple: #a855f7;
+
+    --radius: 12px;
+    --gap: 12px;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html { font-size: 16px; }
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.4;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* --- login --- */
+.kds-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    gap: 1rem;
+}
+.kds-login-logo img { opacity: .8; }
+.kds-login h1 { font-size: 1.75rem; font-weight: 700; }
+.kds-login p { color: var(--text-dim); max-width: 24rem; }
+.kds-login form { display: flex; flex-direction: column; gap: .75rem; width: 100%; max-width: 20rem; }
+.kds-login input[type="password"], .kds-login input[type="text"] {
+    width: 100%; padding: 1rem; font-size: 1.1rem;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); outline: none;
+}
+.kds-login input[type="password"]:focus, .kds-login input[type="text"]:focus { border-color: var(--blue); }
+.kds-login button {
+    padding: 1rem; font-size: 1.1rem; font-weight: 600;
+    background: var(--blue); color: #fff; border: none; border-radius: 8px;
+    cursor: pointer;
+}
+.kds-login button:hover { opacity: .9; }
+.kds-error {
+    background: var(--red-dim); color: var(--red); padding: .75rem 1rem;
+    border-radius: 8px; font-weight: 500;
+}
+
+/* --- header --- */
+.kds-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+}
+.kds-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.kds-brand img { opacity: .8; }
+
+/* --- summary stats --- */
+.kds-summary {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    justify-content: center;
+}
+.kds-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 16px;
+    border-radius: 8px;
+    background: var(--bg);
+    min-width: 72px;
+}
+.kds-stat[data-stat="queue"] .kds-stat-num { color: var(--blue); }
+.kds-stat[data-stat="preparing"] .kds-stat-num { color: var(--amber); }
+.kds-stat[data-stat="overdue"] .kds-stat-num { color: var(--red); }
+.kds-stat[data-stat="completed"] .kds-stat-num { color: var(--green); }
+.kds-stat-num { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
+.kds-stat-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-dim); font-weight: 600; }
+
+/* --- controls --- */
+.kds-actions { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+.kds-select {
+    padding: 8px 12px; font-size: .85rem;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); cursor: pointer; outline: none;
+}
+.kds-btn {
+    padding: 8px 16px; font-size: .85rem; font-weight: 600;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap; transition: background .15s;
+}
+.kds-btn:hover { background: var(--surface-hover); }
+.kds-btn-icon { padding: 8px; }
+.kds-btn-primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+.kds-btn-primary:hover { opacity: .9; background: var(--blue); }
+.kds-btn-green { background: var(--green); border-color: var(--green); color: #fff; }
+.kds-btn-green:hover { opacity: .9; background: var(--green); }
+.kds-btn-amber { background: var(--amber); border-color: var(--amber); color: #000; }
+.kds-btn svg { flex-shrink: 0; }
+
+.kds-btn.sound-off svg { opacity: .4; }
+
+/* --- order grid --- */
+.kds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--gap);
+    padding: var(--gap);
+    align-content: start;
+    min-height: calc(100vh - 64px);
+}
+.kds-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    padding: 4rem 2rem;
+    color: var(--text-dim);
+}
+.kds-empty p { font-size: 1.25rem; font-weight: 600; }
+.kds-empty span { font-size: .9rem; color: var(--text-muted); }
+
+/* --- order card --- */
+.kds-card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color .2s, box-shadow .2s;
+    animation: kds-fadein .3s ease-out;
+}
+@keyframes kds-fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.kds-card.is-new { border-color: var(--blue); }
+.kds-card.is-preparing { border-color: var(--amber); }
+.kds-card.is-overdue { border-color: var(--red); box-shadow: 0 0 20px rgba(239, 68, 68, .25); }
+.kds-card.is-completed { border-color: var(--green); opacity: .7; }
+.kds-card.is-new-flash { animation: kds-flash .6s ease-in-out 3; }
+@keyframes kds-flash {
+    0%, 100% { box-shadow: none; }
+    50% { box-shadow: 0 0 30px rgba(59, 130, 246, .5); }
+}
+
+/* card header with type badge */
+.kds-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    gap: 8px;
+}
+.kds-type {
+    font-size: .75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+.kds-type-dinein { background: var(--blue-dim); color: var(--blue); }
+.kds-type-delivery { background: var(--orange-dim); color: var(--orange); }
+.kds-type-pickup { background: var(--green-dim); color: var(--green); }
+
+.kds-order-num {
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--text-dim);
+}
+
+/* card info */
+.kds-card-info {
+    padding: 0 14px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.kds-card-primary {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.kds-card-secondary {
+    font-size: .8rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.kds-card-secondary .kds-pay {
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--bg);
+    font-weight: 600;
+    font-size: .7rem;
+    text-transform: uppercase;
+}
+
+/* items list */
+.kds-card-items {
+    padding: 0 14px;
+    flex: 1;
+}
+.kds-card-items ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.kds-card-items li {
+    display: flex;
+    gap: 8px;
+    font-size: .95rem;
+    line-height: 1.35;
+    padding: 3px 0;
+    border-bottom: 1px solid var(--border);
+}
+.kds-card-items li:last-child { border-bottom: none; }
+.kds-item-qty {
+    font-weight: 800;
+    color: var(--amber);
+    min-width: 2ch;
+    text-align: right;
+    flex-shrink: 0;
+}
+.kds-item-name { flex: 1; }
+.kds-item-mods { color: var(--text-dim); font-size: .8rem; }
+.kds-item-note {
+    font-size: .8rem;
+    color: var(--purple);
+    font-style: italic;
+}
+
+/* special instructions */
+.kds-card-notes {
+    margin: 8px 14px;
+    padding: 8px 12px;
+    background: rgba(168, 85, 247, .12);
+    border: 1px solid rgba(168, 85, 247, .3);
+    border-radius: 8px;
+    font-size: .9rem;
+    font-weight: 600;
+    color: #c084fc;
+}
+.kds-card-notes::before {
+    content: 'SPECIAL INSTRUCTION';
+    display: block;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    color: var(--purple);
+    margin-bottom: 4px;
+}
+
+/* timer + actions */
+.kds-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    gap: 8px;
+}
+.kds-timer {
+    font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    min-width: 5ch;
+}
+.kds-timer.is-ok { color: var(--green); }
+.kds-timer.is-warn { color: var(--amber); }
+.kds-timer.is-overdue { color: var(--red); }
+.kds-received {
+    font-size: .8rem;
+    color: var(--text-dim);
+}
+.kds-card-foot .kds-btn {
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 700;
+    min-height: 48px;
+}
+
+/* status indicator on card */
+.kds-status {
+    font-size: .7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.kds-status-new { background: var(--blue-dim); color: var(--blue); }
+.kds-status-preparing { background: var(--amber-dim); color: var(--amber); }
+.kds-status-overdue { background: var(--red-dim); color: var(--red); }
+.kds-status-completed { background: var(--green-dim); color: var(--green); }
+
+/* --- settings panel --- */
+.kds-settings-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kds-settings-panel[hidden] {
+    display: none;
+}
+.kds-settings-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    cursor: pointer;
+}
+.kds-settings-body {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 480px;
+    z-index: 1;
+}
+.kds-settings-body h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+.kds-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--border);
+    gap: 1rem;
+}
+.kds-field label { font-weight: 600; }
+.kds-field-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.kds-field-input input[type="number"] {
+    width: 5rem;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    text-align: center;
+}
+.kds-field-input span { color: var(--text-dim); }
+.kds-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.kds-toggle input { width: 18px; height: 18px; accent-color: var(--green); }
+.kds-settings-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+}
+
+/* --- responsive --- */
+@media (max-width: 900px) {
+    .kds-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    .kds-brand span { display: none; }
+}
+@media (max-width: 600px) {
+    .kds-header { padding: 8px; gap: 6px; }
+    .kds-summary { gap: 4px; }
+    .kds-stat { padding: 4px 10px; min-width: 56px; }
+    .kds-stat-num { font-size: 1.2rem; }
+    .kds-grid { grid-template-columns: 1fr; padding: 8px; gap: 8px; }
+    /* On a phone the filters and buttons wrap instead of pushing Sign out off screen. */
+    .kds-actions { flex-wrap: wrap; flex-shrink: 1; min-width: 0; }
+    .kds-actions select { flex: 1 1 120px; min-width: 0; }
+}
+
+/* large kitchen screen (1920+) */
+@media (min-width: 1600px) {
+    .kds-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; padding: 16px; }
+    .kds-card-primary { font-size: 1.4rem; }
+    .kds-timer { font-size: 1.8rem; }
+    .kds-card-items li { font-size: 1.05rem; }
+}
+
+/* print: hide for now */
+@media print { body { display: none; } }
+
+/* Fold, Flip and razr cover screens: the four counters wrap two by two */
+@media (max-width: 360px) {
+    .kds-header { padding: 6px; }
+    .kds-brand { font-size: .95rem; }
+    .kds-summary { flex-wrap: wrap; flex-basis: 100%; }
+    .kds-stat { flex: 1 1 calc(50% - 4px); min-width: 0; padding: 4px 6px; }
+    .kds-grid { padding: 6px; gap: 6px; }
+    .kds-btn { padding: 8px 10px; }
+}
+/* Short screens (razr outer screen, phones sideways): header scrolls away instead of covering orders */
+@media (max-height: 480px) {
+    .kds-header { position: static; }
+    .kds-grid { min-height: 0; }
+}
+@media (max-height: 480px) and (max-width: 900px) {
+    .kds-summary { flex-wrap: nowrap; flex-basis: 100%; order: 3; }
+    .kds-stat { flex: 1 1 0; min-width: 0; padding: 2px 4px; }
+    .kds-stat-num { font-size: 1.05rem; }
+    .kds-stat-label { font-size: .55rem; }
+}
+.kds-who { padding: 2px 8px; border-radius: 999px; background: var(--bg); color: var(--text-dim); font-size: .72rem; font-weight: 600; }
+.kds-who:empty { display: none; }

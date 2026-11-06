@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift Cards | RMS</title>
+  <meta name="description" content="Give the gift of RMS. Buy a digital gift card for RMS in Wilton Manors, delivered by email today or on the day you choose.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/site/cocktail-photo-1600.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css?v=20261104f">
+  <link rel="stylesheet" href="api/site-features.php">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="./" class="logo"><img src="images/logo.png" alt="RMS" width="360" height="220"></a>
+      <nav class="nav">
+        <a href="./">Home</a><a href="events.html">Events</a><a href="menu.html">Menu</a>
+        <a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a><a href="gallery.html">Gallery</a>
+        <a href="private-events.html">Private Events</a><a href="gift-cards.html" class="active">Gift Cards</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html#reserve" class="btn-reserve">Reserve A Table</a>
+      <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav"><button class="mobile-nav-close" aria-label="Close menu">&times;</button><a href="./">Home</a><a href="events.html">Events</a><a href="menu.html">Menu</a><a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a><a href="gallery.html">Gallery</a><a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+
+  <section class="page-banner">
+    <div class="page-banner-bg" style="background-image: url('images/site/cocktail-photo-1600.webp');"></div>
+    <div class="page-banner-content">
+      <span class="section-label">Holiday Season 2026</span>
+      <h1>Give the Gift of <em>RMS</em></h1>
+      <p>Drinks, shows and a night to remember. Buy a digital gift card in minutes, delivered straight to their inbox.</p>
+      <div class="breadcrumb"><a href="./">Home</a> <span>/</span> <span>Gift Cards</span></div>
+    </div>
+  </section>
+
+  <!-- HAPPY HOUR TICKER (details from the Square site's Happy Hour Menu page) -->
+  <a class="hh-ticker" href="menu.html#happy-hour" aria-label="Happy Hour every day 4 to 6:45 PM. See the Happy Hour menu.">
+    <span class="hh-ticker-label">
+      <span class="hh-ticker-dot"></span>
+      <span data-hh-status data-hh-idle="Happy Hour &middot; Daily 4&ndash;6:45 PM">Happy Hour &middot; Daily 4&ndash;6:45 PM</span>
+    </span>
+    <span class="hh-ticker-track" aria-hidden="true">
+      <span class="hh-ticker-items">
+        <span>Mini Nachos <b>$6.99</b></span>
+        <span>Mexican Street Tacos <b>$6</b></span>
+        <span>Champ Slider &amp; Fries <b>$6.99</b></span>
+        <span>BBQ Pork Slider &amp; Fries <b>$6.99</b></span>
+        <span>4 oz. Burger &amp; Fries <b>$6.99</b></span>
+        <span>Bacon Cheese Dog &amp; Fries <b>$6.99</b></span>
+        <span>Wings (5) <b>$6.99</b></span>
+        <span>Chicken Quesadilla <b>$11.99</b></span>
+        <span>Sides from <b>$3</b></span>
+        <span class="hh-ticker-cta">See the Happy Hour menu &rarr;</span>
+      </span>
+    </span>
+  </a>
+  <div class="pride-divider"></div>
+
+  <!-- GIFT CARDS (built by js/gift-cards.js from api/gift-cards.php; designs and amounts are set in Admin → Gift cards) -->
+  <section class="section gc-section" id="buy">
+    <div class="container">
+      <div class="gc-view" id="gc-view" hidden></div>
+
+      <div class="gc-shop" id="gc-shop">
+        <noscript><p class="gc-note">Please turn on JavaScript to buy a gift card online, or call us at <a href="tel:+19545652526">(954) 565-2526</a>.</p></noscript>
+        <p class="gc-note" id="gc-unavailable" hidden>Online gift cards are not available right now. Visit us at the bar or call <a href="tel:+19545652526">(954) 565-2526</a> to buy one.</p>
+
+        <form class="gc-grid" id="gc-form" novalidate hidden>
+          <div class="gc-steps">
+            <div class="gc-step">
+              <h2 class="gc-step-title"><span class="gc-num">1</span>Choose a Design</h2>
+              <p class="gc-step-sub">Pick the card your recipient will see.</p>
+              <div class="gc-designs" id="gc-designs" role="radiogroup" aria-label="Gift card design"></div>
+              <div class="gc-custom" id="gc-custom" hidden>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="gc-photo">Your picture <span class="gc-opt">(optional)</span></label>
+                    <input type="file" id="gc-photo" accept="image/jpeg,image/png,image/webp">
+                    <small class="gc-hint">JPG, PNG or WebP. We crop it to fit the card.</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="gc-title">Words on the card</label>
+                    <input type="text" id="gc-title" maxlength="40" placeholder="Happy Birthday, Jordan!">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gc-step">
+              <h2 class="gc-step-title"><span class="gc-num">2</span>Choose an Amount</h2>
+              <p class="gc-step-sub" id="gc-amount-sub">Pick an amount.</p>
+              <div class="gc-amounts" id="gc-amounts" role="radiogroup" aria-label="Amount"></div>
+              <div class="form-group gc-custom-amount" id="gc-custom-amount" hidden>
+                <label for="gc-amount-input">Custom amount</label>
+                <div class="gc-dollar"><span>$</span><input type="text" id="gc-amount-input" inputmode="numeric" placeholder="75"></div>
+              </div>
+            </div>
+
+            <div class="gc-step">
+              <h2 class="gc-step-title"><span class="gc-num">3</span>Who's It For?</h2>
+              <div class="gc-toggle" role="radiogroup" aria-label="Who the card is for">
+                <button type="button" role="radio" aria-checked="true" data-for="someone">Send to someone</button>
+                <button type="button" role="radio" aria-checked="false" data-for="me">It's for me</button>
+              </div>
+              <div class="gc-recipient" id="gc-recipient">
+                <div class="form-row">
+                  <div class="form-group"><label for="gc-to-name">Recipient name</label><input type="text" id="gc-to-name" maxlength="80" autocomplete="off"></div>
+                  <div class="form-group"><label for="gc-to-email">Recipient email</label><input type="email" id="gc-to-email" maxlength="120" autocomplete="off"></div>
+                </div>
+                <div class="form-group"><label for="gc-message">Personal message <span class="gc-opt">(optional)</span></label><textarea id="gc-message" maxlength="300" rows="3" placeholder="Happy holidays! First round's on me."></textarea></div>
+                <div class="form-group gc-date"><label for="gc-date">Send on</label><input type="date" id="gc-date"><small class="gc-hint">Leave as today to send it now, or pick a day (like Christmas morning).</small></div>
+              </div>
+            </div>
+
+            <div class="gc-step">
+              <h2 class="gc-step-title"><span class="gc-num">4</span>Your Details</h2>
+              <div class="form-row">
+                <div class="form-group"><label for="gc-from-name">Your name</label><input type="text" id="gc-from-name" maxlength="80" autocomplete="name"></div>
+                <div class="form-group"><label for="gc-from-email">Your email (for the receipt)</label><input type="email" id="gc-from-email" maxlength="120" autocomplete="email"></div>
+              </div>
+              <div class="form-group" id="gc-phone-wrap"><label for="gc-from-phone">Your phone</label><input type="tel" id="gc-from-phone" maxlength="20" autocomplete="tel"></div>
+            </div>
+          </div>
+
+          <aside class="gc-side">
+            <div class="gc-summary">
+              <h3>Your Gift Card</h3>
+              <div class="gc-card gc-card-lg" id="gc-preview"></div>
+              <dl class="gc-lines" id="gc-lines"></dl>
+              <div id="gc-pay-square" hidden>
+                <div id="gc-card-field" class="gc-card-field"></div>
+              </div>
+              <p class="gc-pay-note" id="gc-pay-request" hidden>We'll call you to take payment, then email the card. Nothing is charged online.</p>
+              <p class="gc-error" id="gc-error" role="alert" hidden></p>
+              <button type="submit" class="btn-primary gc-buy" id="gc-buy">Buy Gift Card</button>
+              <p class="gc-secure" id="gc-secure" hidden>Payments processed securely by Square. Card details never touch our server.</p>
+            </div>
+          </aside>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark gc-extras">
+    <div class="container">
+      <div class="gc-extras-grid">
+        <div class="gc-balance">
+          <span class="section-label">Already Have One?</span>
+          <h2 class="section-title">Check Your <em>Balance</em></h2>
+          <form id="gc-balance-form" class="gc-balance-form" novalidate>
+            <label for="gc-balance-code" class="sr-only">Gift card code</label>
+            <input type="text" id="gc-balance-code" inputmode="numeric" autocomplete="off" placeholder="Gift card code">
+            <button type="submit" class="btn-outline">Check</button>
+          </form>
+          <p class="gc-balance-out" id="gc-balance-out" role="status"></p>
+        </div>
+        <div class="gc-how">
+          <span class="section-label">How It Works</span>
+          <ol>
+            <li><b>Pick &amp; personalise</b> a design, an amount and your message.</li>
+            <li><b>Pay securely</b> online.</li>
+            <li><b>We email the card</b> with its code, today or on the day you choose.</li>
+            <li><b>Redeem at RMS:</b> show the code at the bar. Any balance left stays on the card.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="./" class="logo"><img loading="lazy" decoding="async" src="images/logo.png" alt="RMS" width="360" height="220"></a><p class="footer-tagline">Dining, Drinks, Entertainment.<br>Simply unforgettable.</p><div class="footer-social"><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="./">Home</a></li><li><a href="events.html">Events</a></li><li><a href="menu.html">Menu</a></li><li><a href="entertainment.html">Entertainment</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+        <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a href="private-events.html">Private Events</a></li><li><a href="gift-cards.html">Gift Cards</a></li><li><a href="performers.html">Our Performers</a></li><li><a href="dancers.html">Meet Our Dancers</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html#reserve">Reservations</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Info</h4><div class="footer-contact-item"><span class="icon"><i class="fas fa-map-marker-alt"></i></span><p>2266 Wilton Drive<br>Wilton Manors, FL 33305</p></div><div class="footer-contact-item"><span class="icon"><i class="fas fa-phone"></i></span><a href="tel:+19545652526">(954) 565-2526</a></div><div class="footer-contact-item"><span class="icon"><i class="far fa-clock"></i></span><p>Mon - Sun<br>11:00 AM - 2:00 AM</p></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 RMS. All rights reserved.</p><p class="footer-credit">Website designed and developed by <a href="https://seoberg.com" target="_blank" rel="noopener">SEOBERG</a></p></div>
+    </div>
+  </footer>
+  <div class="mobile-cta-bar">
+    <a href="tel:+19545652526" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="contact.html#reserve" class="cta-reserve">Reserve A Table</a>
+  </div>
+  <script src="js/main.js?v=20260925"></script>
+  <script src="js/chat.js?v=20261016b"></script>
+  <script src="js/gift-cards.js?v=20261103"></script>
+</body>
+</html>

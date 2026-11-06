@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | RMS</title>
+  <meta name="description" content="Contact RMS. Make a reservation, plan an event, or reach out with questions.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/site/outdoor-patio-scene-1600.webp" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css?v=20261104f">
+  <link rel="stylesheet" href="api/site-features.php">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <a href="./" class="logo"><img src="images/logo.png" alt="RMS" width="360" height="220"></a>
+      <nav class="nav">
+        <a href="./">Home</a><a href="events.html">Events</a><a href="menu.html">Menu</a>
+        <a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a><a href="gallery.html">Gallery</a>
+        <a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a><a href="about.html">About</a><a href="contact.html" class="active">Contact</a>
+      </nav>
+      <a href="#reserve" class="btn-reserve">Reserve A Table</a>
+      <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav"><button class="mobile-nav-close" aria-label="Close menu">&times;</button><a href="./">Home</a><a href="events.html">Events</a><a href="menu.html">Menu</a><a href="entertainment.html">Entertainment</a><a href="performers.html">Performers</a><a href="dancers.html">Dancers</a><a href="gallery.html">Gallery</a><a href="private-events.html">Private Events</a><a href="gift-cards.html">Gift Cards</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+
+  <section class="page-banner">
+    <div class="page-banner-bg" style="background-image: url('images/site/outdoor-patio-scene-1600.webp');"></div>
+    <div class="page-banner-content">
+      <span class="section-label">Get In Touch</span>
+      <h1>Contact Us</h1>
+      <p>Have a question, want to make a reservation, or planning an event? We'd love to hear from you.</p>
+      <div class="breadcrumb"><a href="./">Home</a> <span>/</span> <span>Contact</span></div>
+    </div>
+  </section>
+
+  <!-- HAPPY HOUR TICKER (details from the Square site's Happy Hour Menu page) -->
+  <a class="hh-ticker" href="menu.html#happy-hour" aria-label="Happy Hour every day 4 to 6:45 PM. See the Happy Hour menu.">
+    <span class="hh-ticker-label">
+      <span class="hh-ticker-dot"></span>
+      <span data-hh-status data-hh-idle="Happy Hour &middot; Daily 4&ndash;6:45 PM">Happy Hour &middot; Daily 4&ndash;6:45 PM</span>
+    </span>
+    <span class="hh-ticker-track" aria-hidden="true">
+      <span class="hh-ticker-items">
+        <span>Mini Nachos <b>$6.99</b></span>
+        <span>Mexican Street Tacos <b>$6</b></span>
+        <span>Champ Slider &amp; Fries <b>$6.99</b></span>
+        <span>BBQ Pork Slider &amp; Fries <b>$6.99</b></span>
+        <span>4 oz. Burger &amp; Fries <b>$6.99</b></span>
+        <span>Bacon Cheese Dog &amp; Fries <b>$6.99</b></span>
+        <span>Wings (5) <b>$6.99</b></span>
+        <span>Chicken Quesadilla <b>$11.99</b></span>
+        <span>Sides from <b>$3</b></span>
+        <span class="hh-ticker-cta">See the Happy Hour menu &rarr;</span>
+      </span>
+    </span>
+  </a>
+  <div class="pride-divider"></div>
+
+  <!-- CONTACT INFO + FORM -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="fade-in">
+          <span class="section-label">Reach Out</span>
+          <h2 class="section-title" style="text-align:left; font-size:36px;">We'd Love to <em>Hear From You</em></h2>
+          <p style="color:var(--text-muted); margin:20px 0 40px; line-height:1.8;">Whether you have a question about our menu, want to book a private event, or just want to say hello — fill out the form and we'll get back to you shortly.</p>
+
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Address</h4>
+              <p>2266 Wilton Drive, Wilton Manors, FL 33305</p>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>Phone</h4>
+              <p><a href="tel:+19545652526" style="color:var(--gold);">(954) 565-2526</a></p>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:info@example.com" style="color:var(--gold);">info@example.com</a></p>
+            </div>
+          </div>
+          <div class="visit-detail">
+            <div class="visit-detail-icon"><i class="far fa-clock"></i></div>
+            <div>
+              <h4>Hours</h4>
+              <p>Monday - Sunday: 11:00 AM - 2:00 AM</p>
+            </div>
+          </div>
+
+          <div style="margin-top:30px;">
+            <h4 style="font-family:'Inter',sans-serif; font-size:13px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">Follow Us</h4>
+            <div class="footer-social">
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" style="border-color:var(--border);"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="border-color:var(--border);"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in fade-in-delay-1">
+          <form class="contact-form" id="contact-form" method="post" action="#" data-endpoint="api/contact.php" data-type="contact" data-success="Thank you! Your message has been sent &mdash; we'll get back to you shortly." novalidate>
+            <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="(954) 000-0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="">Select a topic</option>
+                <option value="general">General Inquiry</option>
+                <option value="reservation">Reservation</option>
+                <option value="private-event" data-site-feature="private-events">Private Event</option>
+                <option value="catering">Catering</option>
+                <option value="entertainment">Entertainment / Booking</option>
+                <option value="feedback">Feedback</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us what you're looking for..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="border:none; cursor:pointer; width:100%; text-align:center;">Send Message</button>
+            <p class="form-status" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION SECTION -->
+  <section class="section section-dark" id="reserve">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="fade-in">
+          <span class="section-label">Book Your Spot</span>
+          <h2 class="section-title" style="text-align:left; font-size:36px;">Reserve <em>A Table</em></h2>
+          <p style="color:var(--text-muted); margin:20px 0 30px; line-height:1.8;">Secure your spot for dining, brunch, or a night out. Walk-ins are always welcome, but reservations guarantee your table.</p>
+          <div style="background:var(--bg-card); border:1px solid var(--border); padding:30px; margin-bottom:20px;">
+            <h4 style="font-family:'Inter',sans-serif; font-size:13px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">Reservation Tips</h4>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:12px;">
+              <li style="color:var(--text-body); font-size:14px;"><i class="fas fa-check" style="color:var(--gold); margin-right:10px;"></i> Weekend reservations recommended 48 hours in advance</li>
+              <li style="color:var(--text-body); font-size:14px;"><i class="fas fa-check" style="color:var(--gold); margin-right:10px;"></i> Sunday brunch fills up fast — book early</li>
+              <li style="color:var(--text-body); font-size:14px;"><i class="fas fa-check" style="color:var(--gold); margin-right:10px;"></i> Parties of 8+ should call directly</li>
+              <li style="color:var(--text-body); font-size:14px;"><i class="fas fa-check" style="color:var(--gold); margin-right:10px;"></i> Special dietary needs? Let us know in advance</li>
+            </ul>
+          </div>
+          <a href="tel:+19545652526" class="btn-outline" style="display:inline-block;"><i class="fas fa-phone"></i>&nbsp; Call to Reserve: (954) 565-2526</a>
+        </div>
+
+        <div class="fade-in fade-in-delay-1">
+          <form class="contact-form" id="reservation-form" method="post" action="#" data-endpoint="api/contact.php" data-type="reservation" data-success="Thank you! We've received your request and will call or email to confirm your table." novalidate>
+            <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="res-name">Full Name</label>
+                <input type="text" id="res-name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="res-phone">Phone</label>
+                <input type="tel" id="res-phone" name="phone" placeholder="(954) 000-0000" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="res-email">Email Address</label>
+              <input type="email" id="res-email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="res-date">Date</label>
+                <input type="date" id="res-date" name="date" required>
+              </div>
+              <div class="form-group">
+                <label for="res-time">Preferred Time</label>
+                <select id="res-time" name="time" required>
+                  <option value="">Select time</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="11:30">11:30 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="12:30">12:30 PM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="13:30">1:30 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                  <option value="17:30">5:30 PM</option>
+                  <option value="18:00">6:00 PM</option>
+                  <option value="18:30">6:30 PM</option>
+                  <option value="19:00">7:00 PM</option>
+                  <option value="19:30">7:30 PM</option>
+                  <option value="20:00">8:00 PM</option>
+                  <option value="20:30">8:30 PM</option>
+                  <option value="21:00">9:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="res-guests">Number of Guests</label>
+                <select id="res-guests" name="guests" required>
+                  <option value="">Party size</option>
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="7">7 Guests</option>
+                  <option value="8">8+ Guests (call us)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="res-area">Preferred Area</label>
+                <select id="res-area" name="area">
+                  <option value="">No preference</option>
+                  <option value="main-bar">Main Bar</option>
+                  <option value="lounge">Lounge</option>
+                  <option value="patio">Outdoor Patio</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="res-notes">Special Requests</label>
+              <textarea id="res-notes" name="notes" placeholder="Allergies, celebrations, seating preferences..." style="min-height:80px;"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="border:none; cursor:pointer; width:100%; text-align:center;">Request Reservation</button>
+            <p class="form-status" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <div class="container-wide">
+      <div class="visit-map fade-in" style="height:450px;">
+        <iframe src="https://www.google.com/maps?q=RMS,+2266+Wilton+Dr,+Wilton+Manors,+FL+33305&output=embed" title="Map: RMS, 2266 Wilton Drive" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN OUR TEAM (the Square site's "Team Member Application" page) -->
+  <section class="careers" id="join-our-team">
+    <div class="container">
+      <div class="careers-inner">
+        <div class="careers-icon" aria-hidden="true"><i class="fas fa-user-plus"></i></div>
+        <div class="careers-text">
+          <span class="section-label">Careers</span>
+          <h2>Join Our <em>Team</em></h2>
+          <p>Want to be part of RMS family? Download our Team Member Application, fill it out and bring it with you to 2266 Wilton Drive.</p>
+        </div>
+        <a class="btn-primary careers-btn" href="https://your-store.square.site/uploads/b/7160bda0-4416-11e9-bf06-fd02521b69bb/f81873b0-b7f4-11ef-93a4-ad1d10a03dda.pdf" target="_blank" rel="noopener" download>
+          <i class="fas fa-file-download" aria-hidden="true"></i>&nbsp; Download Application <span class="careers-meta">(PDF)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER (like "Stay in the Loop" on the Square site) — posts to api/subscribe.php -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay in the <em>Loop</em></h2>
+      <p>Get the latest on events, shows and specials when you sign up for our newsletter.</p>
+      <form class="newsletter-form" method="post" action="#" data-endpoint="api/subscribe.php" data-success="You're on the list! Watch your inbox for our next update." novalidate>
+        <label class="sr-only" for="nl-email-contact">Email address</label>
+        <input id="nl-email-contact" type="email" name="email" placeholder="Email" autocomplete="email" required>
+        <input class="hp-field" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="form-status" role="status" aria-live="polite" hidden></p>
+      <p class="newsletter-note">No spam &mdash; just the good stuff. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <div class="pride-divider"></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="./" class="logo"><img loading="lazy" decoding="async" src="images/logo.png" alt="RMS" width="360" height="220"></a><p class="footer-tagline">Dining, Drinks, Entertainment.<br>Simply unforgettable.</p><div class="footer-social"><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="./">Home</a></li><li><a href="events.html">Events</a></li><li><a href="menu.html">Menu</a></li><li><a href="entertainment.html">Entertainment</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+        <div class="footer-col"><h4>Explore</h4><ul class="footer-links"><li><a href="private-events.html">Private Events</a></li><li><a href="gift-cards.html">Gift Cards</a></li><li><a href="performers.html">Our Performers</a></li><li><a href="dancers.html">Meet Our Dancers</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html#reserve">Reservations</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Info</h4><div class="footer-contact-item"><span class="icon"><i class="fas fa-map-marker-alt"></i></span><p>2266 Wilton Drive<br>Wilton Manors, FL 33305</p></div><div class="footer-contact-item"><span class="icon"><i class="fas fa-phone"></i></span><a href="tel:+19545652526">(954) 565-2526</a></div><div class="footer-contact-item"><span class="icon"><i class="far fa-clock"></i></span><p>Mon - Sun<br>11:00 AM - 2:00 AM</p></div></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 RMS. All rights reserved.</p><p class="footer-credit">Website designed and developed by <a href="https://seoberg.com" target="_blank" rel="noopener">SEOBERG</a></p></div>
+    </div>
+  </footer>
+  <div class="mobile-cta-bar">
+    <a href="tel:+19545652526" class="cta-call"><i class="fas fa-phone"></i> Call Now</a>
+    <a href="contact.html#reserve" class="cta-reserve">Reserve A Table</a>
+  </div>
+  <script src="js/main.js?v=20260925"></script>
+  <script src="js/chat.js?v=20261016b"></script>
+</body>
+</html>
